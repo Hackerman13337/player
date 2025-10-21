@@ -1,8 +1,8 @@
 :root {
-  --brand-color: #FF0000;
-  --brand-color-light: #FF0000EE;
-  --brand-color-lighter: #FF0000DD;
-  --brand-color-lightest: #FF0000CC;
+  --brand-color: #1EC95B;
+  --brand-color-light: #1EC95BEE;
+  --brand-color-lighter: #1EC95BDD;
+  --brand-color-lightest: #1EC95BCC;
 
   --player-border-radius: 0px;
   --player-background-color: black;
@@ -10,7 +10,7 @@
   --player-horizontal-padding: 0px;
 
   --tray-font: 'Helvetica';
-  --tray-background-color: red;
+  --tray-background-color: var(--menu-background-color);
   --tray-full-background-color: transparent;
   --tray-margin: 0px;
   --tray-height: 40px;
