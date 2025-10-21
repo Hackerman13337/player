@@ -27,14 +27,14 @@
 
   <!-- Control bar or tray -->
   <div id="tray" role="region" aria-live="assertive">
+    <div class="tray-scrubber">
+      {% player scrubber %}
+      {% player sections %}
+    </div>
+
     <div id="traysub">
       <div class="tray-left">
         {% player play-button %}
-      </div>
-
-      <div class="tray-scrubber">
-        {% player scrubber %}
-        {% player sections %}
       </div>
 
       <div class="tray-right">
@@ -47,8 +47,6 @@
         {% player quality-button %}
         {% player fullscreen-button %}
       </div>
-
-
 
       <div class="clear"></div>
     </div>

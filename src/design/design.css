@@ -402,7 +402,6 @@ ul.button-menu-selection li.selected button,
 #traysub {
   display: flex;
   margin: 0;
-  order: 2;
 }
 .tray-left,
 .tray-right {
@@ -411,7 +410,6 @@ ul.button-menu-selection li.selected button,
 }
 .tray-scrubber {
   background: transparent !important;
-  order: 1;
 }
 
 /* Ensure all buttons, icons, and text are fully opaque and visible */
