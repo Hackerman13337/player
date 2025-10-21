@@ -927,6 +927,14 @@ Player.provide('video-display',
           }
       });
 
+      // Add double-click for fullscreen toggle (like YouTube)
+      $this.canvas.on('dblclick', function(e){
+          // Don't toggle if clicking on controls or other UI elements
+          if($(e.target).closest('.tray-scrubber, .tray-left, .tray-right, button').length === 0) {
+              Player.set('fullscreen', !Player.get('fullscreen'));
+          }
+      });
+
       return $this;
   }
 );

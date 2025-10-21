@@ -382,17 +382,16 @@ ul.button-menu-selection li.selected button,
 /* === tray === */
 #tray {
   position:absolute;
-  bottom:-20px;
+  bottom: 0;
   left: 0;
   right: 0;
   opacity: 0;
-  transition: all 100ms linear;
+  transition: opacity 200ms ease;
   z-index: 100;
   color: var(--tray-text-color);
   background: var(--tray-full-background-color);
 }
 .tray-shown #tray {
-  bottom: 0;
   opacity: 1;
 }
 .block-tray #tray {
@@ -530,9 +529,9 @@ ul.button-menu-selection li.selected button,
   display:none;
   position:absolute;
   left: 0;
-  bottom:44px;
-  width: 94px;
-  border:2px solid var(--tray-background-color);
+  bottom:60px;
+  width: 160px;
+  border:3px solid var(--tray-background-color);
   overflow: hidden;
 }
 .tray-shown .scrubber:hover .scrubber-thumbnail {
@@ -557,10 +556,13 @@ ul.button-menu-selection li.selected button,
   text-align: center;
 }
 .scrubber-thumbnail-time {
-  padding: 4px;
+  padding: 6px;
   background: var(--tray-background-color);
-  font-size: 12px;
+  background-color: rgba(0, 0, 0, 0.85) !important;
+  color: white !important;
+  font-size: 13px;
   line-height: 1em;
+  font-weight: 500;
 }
 
 .time-container {
