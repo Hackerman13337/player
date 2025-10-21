@@ -484,8 +484,8 @@ ul.button-menu-selection li.selected button,
 }
 .tray-scrubber {
   width: 100%;
-  margin: 0;
-  padding: 5px 0;
+  margin: 0 0 8px 0;
+  padding: 8px 0;
   height: auto;
 }
 /* === /tray === */
@@ -497,7 +497,7 @@ ul.button-menu-selection li.selected button,
 /* === Module: Scrubber === */
 .scrubber-container {
   position:relative;
-  height: 15px;
+  height: 20px;
 }
 .scrubber {
   position: relative;
