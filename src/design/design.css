@@ -1124,7 +1124,6 @@ body.overlay-shown .button-container-share {
   -webkit-filter: var(--icon-color-filter);
 }
 .tray-right button:hover,
-.subtitle-button-active,
 .audiodescription-button-active {
   background-color: var(--tray-play-button-hover-background-color);
   border-radius:var(--tray-button-highlight-border-radius);
