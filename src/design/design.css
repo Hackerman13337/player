@@ -489,8 +489,8 @@ ul.button-menu-selection li.selected button,
 }
 .tray-scrubber {
   width: 100%;
-  margin: 0 0 8px 0;
-  padding: 8px 0 8px 0;
+  margin: 0 0 4px 0;
+  padding: 6px 0 4px 0;
   height: auto;
   box-sizing: border-box;
 }
