@@ -147,8 +147,10 @@ Player.provide('design',
                  });
 
 
-                 // Set .touch-class on body, if we're on iDevice or Android
-                 if(/iPad|iPhone|Android/.test(navigator.userAgent)){
+                 // Set .touch-class on body, if we're on iDevice/Android or have touch capability
+                 if(/iPad|iPhone|Android/.test(navigator.userAgent) ||
+                    ('ontouchstart' in window) ||
+                    (window.navigator.msMaxTouchPoints)){
                    $("body").addClass("touch");
                  }
 
@@ -201,9 +203,12 @@ Player.provide('design',
                    $('body').removeClass("tray-shown");
                  };
                  var _toggleTray = function(){
+                   console.log('_toggleTray called, current tray-shown:', $('body').hasClass("tray-shown"));
                    if($('body').hasClass("tray-shown")){
+                     console.log('Hiding tray');
                      _hideTray();
                    } else {
+                     console.log('Showing tray');
                      _showTray();
                    }
                  };
@@ -212,7 +217,9 @@ Player.provide('design',
 
                  // On touch devices, toggle tray on canvas tap
                  Player.bind('player:video:canvastap', function(){
+                   console.log('Canvas tap event received, touch class:', $('body').hasClass('touch'));
                    if($('body').hasClass('touch')) {
+                     console.log('Toggling tray...');
                      _toggleTray();
                    }
                  });
