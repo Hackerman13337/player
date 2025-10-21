@@ -12,6 +12,39 @@ Player.provide('subtitle-button',
     var $this = this;
     $.extend($this, opts);
 
+    // Swedish language name translations
+    var languageTranslations = {
+      'English': 'Engelska',
+      'Swedish': 'Svenska',
+      'Spanish': 'Spanska',
+      'French': 'Franska',
+      'German': 'Tyska',
+      'Italian': 'Italienska',
+      'Portuguese': 'Portugisiska',
+      'Dutch': 'Holländska',
+      'Danish': 'Danska',
+      'Norwegian': 'Norska',
+      'Finnish': 'Finska',
+      'Polish': 'Polska',
+      'Russian': 'Ryska',
+      'Chinese': 'Kinesiska',
+      'Japanese': 'Japanska',
+      'Korean': 'Koreanska',
+      'Arabic': 'Arabiska'
+    };
+
+    // Translate language names to Swedish
+    Player.getter('localesArray', function(){
+      var locales = Player.get('locales') || [];
+      return locales.map(function(locale){
+        var translatedLanguage = languageTranslations[locale.language] || locale.language;
+        return {
+          locale: locale.locale,
+          language: translatedLanguage
+        };
+      });
+    });
+
     // Update UI when subtitle changes
     Player.bind('player:subtitlechange', function(e){
       $this.render(function(){
