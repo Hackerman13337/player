@@ -99,7 +99,7 @@ Player.provide('scrubber',
             $this.playContainer.css({
               width: (100.0 * Player.get('displayPlayProgress') / duration) + '%'
             });
-            $this.timeContainer.text( formatTime(Player.get('displayPlayProgress')) );
+            $this.timeContainer.text( formatTime(Player.get('displayPlayProgress')) + ' / ' + formatTime(duration) );
             $(".scrubber, .sections").css({
               marginRight: $this.timeContainer.width() + 10
             });
