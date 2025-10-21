@@ -407,18 +407,12 @@ ul.button-menu-selection li.selected button,
 
 /* Ensure all buttons, icons, and text are fully opaque */
 .tray-left > *,
-.tray-scrubber > *,
 .tray-right > *,
 .tray-left button,
-.tray-scrubber button,
 .tray-right button,
 .tray-left button::after,
-.tray-scrubber button::after,
 .tray-right button::after,
-.time-container,
-.scrubber-track,
-.scrubber-play,
-.scrubber-buffer {
+.time-container {
   opacity: 1 !important;
 }
 
