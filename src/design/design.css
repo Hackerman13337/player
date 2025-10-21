@@ -342,6 +342,10 @@ ul.button-menu {
 }
 ul.button-menu li, ul.button-menu::before, ul.button-menu::after {
   background: var(--menu-background-color) none right center no-repeat;
+  background-color: rgba(0, 0, 0, 0.85) !important;
+}
+ul.button-menu li button {
+  color: white !important;
 }
 ul.button-menu::before {
   border-radius:var(--menu-border-radius) var(--menu-border-radius) 0 0;
@@ -655,6 +659,7 @@ ul.button-menu-selection li.selected button,
   width: 100%;
   height: 0;
   background: var(--menu-background-color);
+  background-color: rgba(0, 0, 0, 0.85) !important;
   overflow: hidden;
   transition: height 200ms ease;
 }
