@@ -405,14 +405,10 @@ ul.button-menu-selection li.selected button,
 }
 
 .tray-left, .tray-left .button-container {
-  border-radius:var(--tray-outer-border-radius) var(--tray-inner-border-radius) var(--tray-inner-border-radius) var(--tray-outer-border-radius);
+  border-radius: 0;
 }
 .tray-left .button-container button {
-  border-radius:
-    calc(max(var(--tray-outer-border-radius), var(--tray-play-button-border-radius)))
-  calc(max(var(--tray-inner-border-radius), var(--tray-play-button-border-radius)))
-  calc(max(var(--tray-inner-border-radius), var(--tray-play-button-border-radius)))
-  calc(max(var(--tray-outer-border-radius), var(--tray-play-button-border-radius)));
+  border-radius: 0;
   overflow:hidden;
   margin:var(--tray-button-border);
 }
@@ -423,10 +419,10 @@ ul.button-menu-selection li.selected button,
   margin:0;
 }
 .tray-scrubber {
-  border-radius:var(--tray-inner-border-radius) 0 0 var(--tray-inner-border-radius);
+  border-radius: 0;
 }
 .tray-right {
-  border-radius:0 var(--tray-outer-border-radius) var(--tray-outer-border-radius) 0;
+  border-radius: 0;
 }
 
 /* Removed max-width constraint for edge-to-edge controls

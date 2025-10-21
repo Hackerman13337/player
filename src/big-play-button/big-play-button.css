@@ -30,7 +30,9 @@
   opacity: 0;
   transition: opacity 200ms linear;
 }
-.player-big-play-button.big-play-shown .big-play-container {
+/* Show big play button when controls are shown OR on touch devices */
+.tray-shown .player-big-play-button.big-play-shown .big-play-container,
+.touch .player-big-play-button.big-play-shown .big-play-container {
   display: block;
   opacity: 1;
 }
