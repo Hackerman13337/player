@@ -479,6 +479,7 @@ ul.button-menu-selection li.selected button,
 }
 .tray-right {
   flex: 0 0 auto;
+  margin-left: auto;
   padding-right: 0;
 }
 .tray-right .button-container > button, .tray-right .button-container > button img {
