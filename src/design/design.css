@@ -396,8 +396,7 @@ ul.button-menu-selection li.selected button,
 }
 #traysub {
   display: flex;
-  max-width: 1200px;
-  margin: 0 auto var(--tray-margin) auto;
+  margin: 0 0 var(--tray-margin) 0;
 }
 .tray-left,
 .tray-scrubber,
@@ -430,11 +429,13 @@ ul.button-menu-selection li.selected button,
   border-radius:0 var(--tray-outer-border-radius) var(--tray-outer-border-radius) 0;
 }
 
+/* Removed max-width constraint for edge-to-edge controls
 @media all and (min-width: 1200px) {
   #traysub {
     width: 960px;
   }
 }
+*/
 .tray-left {
   flex: 0;
   float:left;
