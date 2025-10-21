@@ -301,21 +301,11 @@ Player.provide('design',
 
                  // Show tray initially before video starts playing
                  _showTray();
-                 var _hasStartedPlaying = false;
 
                  Player.bind("player:playflow:transitioned", function(e, transition){
                    if(transition.currentPosition == 3){
                      Player.set("forcer", {type: "block", element: "tray", from: "design", active: false});
-                     // After video starts playing, enable auto-hide behavior
-                     if(!_hasStartedPlaying) {
-                       _hasStartedPlaying = true;
-                       // Trigger hide after a delay when video is playing
-                       window.setTimeout(function(){
-                         if(Player.get('playing')) {
-                           _hideTray();
-                         }
-                       }, 3000);
-                     }
+                     // Tray now follows normal hover behavior (no delay)
                    }
                  });
 
