@@ -401,8 +401,8 @@ ul.button-menu-selection li.selected button,
 .tray-left,
 .tray-scrubber,
 .tray-right {
-  background: var(--tray-background-color);
-  opacity: 0.5;
+  background: var(--tray-background-color) !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 .tray-left, .tray-left .button-container {
