@@ -1,8 +1,8 @@
 :root {
-  --brand-color: #1EC95B;
-  --brand-color-light: #1EC95BEE;
-  --brand-color-lighter: #1EC95BDD;
-  --brand-color-lightest: #1EC95BCC;
+  --brand-color: #FF0000;
+  --brand-color-light: #FF0000EE;
+  --brand-color-lighter: #FF0000DD;
+  --brand-color-lightest: #FF0000CC;
 
   --player-border-radius: 0px;
   --player-background-color: black;
