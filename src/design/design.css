@@ -402,10 +402,12 @@ ul.button-menu-selection li.selected button,
   margin: 0;
 }
 .tray-left,
-.tray-scrubber,
 .tray-right {
   background: var(--tray-background-color) !important;
   background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.tray-scrubber {
+  background: transparent !important;
 }
 
 /* Ensure all buttons, icons, and text are fully opaque and visible */
@@ -477,11 +479,17 @@ ul.button-menu-selection li.selected button,
   width: 38px;
 }
 .tray-scrubber {
-  flex: 1;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
   margin: 0;
-  margin-right: 0; /* Width of buttons to the right of the scrubber. Updated in js. */
   padding: 0;
+  pointer-events: none;
+}
+.tray-scrubber .scrubber-container {
+  pointer-events: auto;
 }
 /* === /tray === */
 
@@ -496,7 +504,7 @@ ul.button-menu-selection li.selected button,
 }
 .scrubber {
   position: relative;
-  margin-right: 70px;
+  margin: 0;
   height: 100%;
   cursor:pointer;
 }
@@ -572,7 +580,9 @@ ul.button-menu-selection li.selected button,
   height: var(--tray-height);
   font-size: 14px;
   line-height: var(--tray-height);
-  padding-right: 5px;
+  padding: 0 10px;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
 }
 .video-stream .time-container {
   padding-left: 10px;
