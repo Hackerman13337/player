@@ -25,16 +25,10 @@
 }
 
 /* Control hide show for play button */
+/* Big play button completely hidden - click video or tray play button instead */
 .player-big-play-button .big-play-container {
-  display: none;
-  opacity: 0;
-  transition: opacity 200ms linear;
-}
-/* Show big play button when controls are shown OR on touch devices */
-.tray-shown .player-big-play-button.big-play-shown .big-play-container,
-.touch .player-big-play-button.big-play-shown .big-play-container {
-  display: block;
-  opacity: 1;
+  display: none !important;
+  opacity: 0 !important;
 }
 .block-big-play .player-big-play-button .big-play-container {
   display: none  !important;

@@ -379,8 +379,8 @@ ul.button-menu-selection li.selected button,
 #tray {
   position:absolute;
   bottom:-20px;
-  left:var(--tray-margin);
-  right:var(--tray-margin);
+  left: 0;
+  right: 0;
   opacity: 0;
   transition: all 100ms linear;
   z-index: 100;
