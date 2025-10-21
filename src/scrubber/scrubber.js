@@ -30,7 +30,11 @@ Player.provide('scrubber',
       $this.scrubberContainer = $this.container.find('.scrubber-container');
       $this.bufferContainer = $this.container.find('.scrubber-buffer').css({"opacity": 0.2});
       $this.playContainer = $this.container.find('.scrubber-play');
-      $this.timeContainer = $this.container.closest('#tray').find('.tray-left .time-container');
+      // Try to find time-container in tray-left, with fallback to anywhere in #tray
+      $this.timeContainer = $('#tray .tray-left .time-container');
+      if($this.timeContainer.length === 0) {
+        $this.timeContainer = $('#tray .time-container');
+      }
       $this.thumbnailContainer = $this.container.find('.scrubber-thumbnail');
       $this.thumbnailTime = $this.thumbnailContainer.find(".scrubber-thumbnail-time");
 
@@ -81,6 +85,14 @@ Player.provide('scrubber',
         if (isNaN(duration) || duration <= 0) return;
       }
 
+      // Re-find time-container if it wasn't found initially or got lost
+      if(!$this.timeContainer || $this.timeContainer.length === 0) {
+        $this.timeContainer = $('#tray .tray-left .time-container');
+        if($this.timeContainer.length === 0) {
+          $this.timeContainer = $('#tray .time-container');
+        }
+      }
+
       // Handle three different kinds of scrubbers: video, dvr, live
       var scrubberType = 'video';
       if(Player.get('quality')=='dvr') {
@@ -122,7 +134,7 @@ Player.provide('scrubber',
             $this.playContainer.css({
               width: '100%'
             });
-            if($this.timeContainer && $this.timeContainer.size() > 0) {
+            if($this.timeContainer && $this.timeContainer.length > 0) {
               $this.timeContainer.html( "<span>Live</span>" + formatTime(Player.get('displayPlayProgress')) );
             }
             break;
