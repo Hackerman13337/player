@@ -10,7 +10,7 @@
   --player-horizontal-padding: 0px;
 
   --tray-font: 'Helvetica';
-  --tray-background-color: var(--menu-background-color);
+  --tray-background-color: red;
   --tray-full-background-color: transparent;
   --tray-margin: 0px;
   --tray-height: 40px;
