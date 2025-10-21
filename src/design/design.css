@@ -448,7 +448,7 @@ ul.button-menu-selection li.selected button,
   display: flex;
   float: right;
   flex: 0;
-  padding-right: 5px;
+  padding-right: 0;
 }
 .tray-right .button-container > button, .tray-right .button-container > button img {
   width: 30px;
@@ -458,7 +458,7 @@ ul.button-menu-selection li.selected button,
   position: relative;
   margin: 0;
   margin-right: 0; /* Width of buttons to the right of the scrubber. Updated in js. */
-  padding: 0 10px;
+  padding: 0;
 }
 /* === /tray === */
 
@@ -565,7 +565,7 @@ ul.button-menu-selection li.selected button,
   left: 0;
   right: 0;
   margin-top: -2px;
-  padding: 0 10px;
+  padding: 0;
 }
 .sections {
   position:relative;
