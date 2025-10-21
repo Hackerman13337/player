@@ -30,7 +30,7 @@ Player.provide('scrubber',
       $this.scrubberContainer = $this.container.find('.scrubber-container');
       $this.bufferContainer = $this.container.find('.scrubber-buffer').css({"opacity": 0.2});
       $this.playContainer = $this.container.find('.scrubber-play');
-      $this.timeContainer = $this.container.find('.time-container');
+      $this.timeContainer = $this.container.closest('#tray').find('.time-container');
       $this.thumbnailContainer = $this.container.find('.scrubber-thumbnail');
       $this.thumbnailTime = $this.thumbnailContainer.find(".scrubber-thumbnail-time");
 

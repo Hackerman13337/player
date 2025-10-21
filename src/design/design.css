@@ -490,10 +490,22 @@ ul.button-menu-selection li.selected button,
   margin: 0 0 3px 0;
   padding: 3px 0 3px 0;
   height: auto;
+  box-sizing: border-box;
 }
 .tray-scrubber .scrubber-container {
   padding: 0;
   margin: 0;
+  width: 100%;
+}
+.tray-scrubber .scrubber {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.tray-scrubber .scrubber-track {
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 /* === /tray === */
 
@@ -579,14 +591,16 @@ ul.button-menu-selection li.selected button,
 }
 
 .time-container {
-  position: absolute;
-  bottom: 0;
-  left: calc(var(--tray-play-button-width) + 38px + 10px); /* Play button + volume button + spacing */
+  position: relative;
   height: var(--tray-height);
   font-size: 14px;
   line-height: var(--tray-height);
-  padding-left: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  white-space: nowrap;
   pointer-events: none;
+  display: flex;
+  align-items: center;
 }
 .video-stream .time-container {
   padding-left: 10px;
