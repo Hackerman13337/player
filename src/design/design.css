@@ -390,6 +390,8 @@ ul.button-menu-selection li.selected button,
   z-index: 100;
   color: var(--tray-text-color);
   background: var(--tray-full-background-color);
+  display: flex;
+  flex-direction: column;
 }
 .tray-shown #tray {
   opacity: 1;
@@ -400,6 +402,7 @@ ul.button-menu-selection li.selected button,
 #traysub {
   display: flex;
   margin: 0;
+  order: 2;
 }
 .tray-left,
 .tray-right {
@@ -408,6 +411,7 @@ ul.button-menu-selection li.selected button,
 }
 .tray-scrubber {
   background: transparent !important;
+  order: 1;
 }
 
 /* Ensure all buttons, icons, and text are fully opaque and visible */
@@ -479,17 +483,10 @@ ul.button-menu-selection li.selected button,
   width: 38px;
 }
 .tray-scrubber {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
-  pointer-events: none;
-}
-.tray-scrubber .scrubber-container {
-  pointer-events: auto;
+  height: 10px;
 }
 /* === /tray === */
 
@@ -500,7 +497,7 @@ ul.button-menu-selection li.selected button,
 /* === Module: Scrubber === */
 .scrubber-container {
   position:relative;
-  height:var(--tray-height);
+  height: 10px;
 }
 .scrubber {
   position: relative;
@@ -510,7 +507,8 @@ ul.button-menu-selection li.selected button,
 }
 .scrubber-track {
   position: relative;
-  top: 23px;
+  top: 50%;
+  transform: translateY(-50%);
   height: 5px;
 }
 .scrubber-buffer, .scrubber-play {
@@ -537,7 +535,7 @@ ul.button-menu-selection li.selected button,
   display:none;
   position:absolute;
   left: 0;
-  bottom:70px;
+  bottom: 15px;
   width: 220px;
   border:3px solid var(--tray-background-color);
   overflow: hidden;
@@ -580,9 +578,7 @@ ul.button-menu-selection li.selected button,
   height: var(--tray-height);
   font-size: 14px;
   line-height: var(--tray-height);
-  padding: 0 10px;
-  background: rgba(0, 0, 0, 0.5);
-  pointer-events: none;
+  padding-right: 5px;
 }
 .video-stream .time-container {
   padding-left: 10px;
