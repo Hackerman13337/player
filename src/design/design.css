@@ -13,15 +13,15 @@
   --tray-background-color: rgba(0, 0, 0, 0.5);
   --tray-full-background-color: transparent;
   --tray-margin: 0px;
-  --tray-height: 50px;
+  --tray-height: 60px;
   --tray-button-border:0px;
   --tray-button-highlight-background-color:transparent;
-  --tray-button-highlight-border-radius:0px;
-  --tray-outer-border-radius: 0px;
-  --tray-inner-border-radius: 0px;
+  --tray-button-highlight-border-radius:8px;
+  --tray-outer-border-radius: 12px;
+  --tray-inner-border-radius: 8px;
   --tray-play-button-gap: 0px;
-  --tray-play-button-width: 85px;
-  --tray-play-button-border-radius: 0px;
+  --tray-play-button-width: 95px;
+  --tray-play-button-border-radius: 8px;
   --tray-play-button-background-color: transparent;
   --tray-play-button-color-filter: var(--icon-color-filter);
   --tray-play-button-hover-background-color: var(--scrubber-color);
@@ -35,7 +35,7 @@
   --scrubber-track-color: #222222;
 
   --menu-gap: 0px;
-  --menu-border-radius: 0px;
+  --menu-border-radius: 8px;
   --menu-background-color: rgba(0, 0, 0, .72);
   --menu-text-color: #bbb;
 
@@ -44,9 +44,9 @@
 
   --big-play-background-color: var(--scrubber-color);
   --big-play-icon-color-filter: url(#icon_white);
-  --big-play-width: 91px;
-  --big-play-height: 51px;
-  --big-play-border-radius: var(--menu-border-radius);
+  --big-play-width: 100px;
+  --big-play-height: 60px;
+  --big-play-border-radius: 8px;
 
   --outline: 3px solid #fff;
 }
@@ -439,15 +439,16 @@ ul.button-menu-selection li.selected button,
 }
 
 .tray-left, .tray-left .button-container {
-  border-radius: 0;
+  border-radius: var(--tray-inner-border-radius);
 }
 .tray-left .button-container button {
-  border-radius: 0;
+  border-radius: var(--tray-button-highlight-border-radius);
   overflow:hidden;
   margin:var(--tray-button-border);
 }
 .tray-right .button-container button {
   margin:var(--tray-button-border) 0;
+  border-radius: var(--tray-button-highlight-border-radius);
 }
 .tray-right .button-container li button {
   margin:0;
@@ -456,7 +457,7 @@ ul.button-menu-selection li.selected button,
   border-radius: 0;
 }
 .tray-right {
-  border-radius: 0;
+  border-radius: var(--tray-inner-border-radius);
 }
 
 /* Removed max-width constraint for edge-to-edge controls
@@ -468,7 +469,7 @@ ul.button-menu-selection li.selected button,
 */
 .tray-left {
   flex: 0 0 auto;
-  padding-left: 0;
+  padding: 8px 10px;
   position: relative;
 }
 .tray-left .play-button {
@@ -476,20 +477,20 @@ ul.button-menu-selection li.selected button,
   transition: background-color 200ms linear;
 }
 .tray-left .button-container > button {
-  width: 38px;
+  width: 45px;
 }
 .tray-right {
   flex: 0 0 auto;
   margin-left: auto;
-  padding-right: 0;
+  padding: 8px 10px;
 }
 .tray-right .button-container > button, .tray-right .button-container > button img {
-  width: 38px;
+  width: 45px;
 }
 .tray-scrubber {
   width: 100%;
-  margin: 0 0 3px 0;
-  padding: 3px 0 3px 0;
+  margin: 0 0 8px 0;
+  padding: 8px 0 8px 0;
   height: auto;
   box-sizing: border-box;
 }
@@ -529,7 +530,9 @@ ul.button-menu-selection li.selected button,
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  height: 5px;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
 }
 .scrubber-buffer, .scrubber-play {
   position:absolute;
@@ -546,6 +549,7 @@ ul.button-menu-selection li.selected button,
 .scrubber-buffer,
 .scrubber-play {
   background-color: var(--scrubber-color);
+  border-radius: 3px;
 }
 .scrubber-buffer {
   opacity: 0.2;
@@ -1091,7 +1095,7 @@ body.overlay-shown .button-container-share {
 
 /* Tray left buttons */
 .tray-left button::after {
-  background-size: 65px;
+  background-size: 75px;
   filter: var(--tray-play-button-color-filter);
   -webkit-filter: var(--tray-play-button-color-filter);
 }
@@ -1115,7 +1119,7 @@ body.overlay-shown .button-container-share {
 
 /* Tray right buttons */
 .tray-right button::after {
-  background-size: 38px 38px;
+  background-size: 45px 45px;
   filter: var(--icon-color-filter);
   -webkit-filter: var(--icon-color-filter);
 }
