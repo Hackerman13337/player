@@ -402,11 +402,14 @@ ul.button-menu-selection li.selected button,
 #traysub {
   display: flex;
   margin: 0;
+  justify-content: space-between;
+  width: 100%;
 }
 .tray-left,
 .tray-right {
   background: var(--tray-background-color) !important;
   background-color: rgba(0, 0, 0, 0.5) !important;
+  display: flex;
 }
 .tray-scrubber {
   background: transparent !important;
@@ -463,20 +466,19 @@ ul.button-menu-selection li.selected button,
 }
 */
 .tray-left {
-  flex: 0;
-  float:left;
-  margin-right:var(--tray-play-button-gap);
+  flex: 0 0 auto;
   padding-left: 110px;
   position: relative;
 }
-.tray-left .button-container button {
+.tray-left .play-button {
   width: var(--tray-play-button-width);
   transition: background-color 200ms linear;
 }
+.tray-left .button-container > button {
+  width: 38px;
+}
 .tray-right {
-  display: flex;
-  float: right;
-  flex: 0;
+  flex: 0 0 auto;
   padding-right: 0;
 }
 .tray-right .button-container > button, .tray-right .button-container > button img {
