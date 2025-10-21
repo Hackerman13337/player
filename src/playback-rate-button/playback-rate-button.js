@@ -8,7 +8,7 @@
 
 Player.provide('playback-rate-button',
   {
-    enablePlaybackRate: 0,
+    enablePlaybackRate: 1,
     playbackRateMenuExpanded: false
   },
   function (Player, $, opts) {
