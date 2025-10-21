@@ -212,8 +212,11 @@ Player.provide('design',
                      _showTray();
                    }
                  };
-                 $(document).mousemove(_showTray);
-                 $(document).mouseleave(_hideTray);
+                 // Only use mousemove on non-touch devices
+                 if(!$('body').hasClass('touch')) {
+                   $(document).mousemove(_showTray);
+                   $(document).mouseleave(_hideTray);
+                 }
 
                  // On touch devices, toggle tray on canvas tap
                  Player.bind('player:video:canvastap', function(){
@@ -320,8 +323,10 @@ Player.provide('design',
 
                  Player.set("forcer", {type: "block", element: "tray", from: "design", active: true});
 
-                 // Show tray initially before video starts playing
-                 _showTray();
+                 // Show tray initially before video starts playing (not on touch devices)
+                 if(!$('body').hasClass('touch')) {
+                   _showTray();
+                 }
 
                  Player.bind("player:playflow:transitioned", function(e, transition){
                    if(transition.currentPosition == 3){
