@@ -1,18 +1,38 @@
 .logo {
     position:absolute;
-    top:20px;
-    left:20px;
+    top:15px;
+    right:15px;
+    left: auto;
     opacity:.8;
+    max-width: 120px;
+    max-height: 40px;
 }
 .logo.align-right {
     left: auto;
-    right: 20px;
+    right: 15px;
+}
+.logo.align-left {
+    left: 15px;
+    right: auto;
 }
 .logo img {
     display: none;
     width: auto;
     height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+/* Responsive sizing for different screen sizes */
+.size-small .logo {
+    max-width: 100px;
+    max-height: 35px;
+    top: 12px;
+    right: 12px;
 }
 .size-tiny .logo {
-    display:none !important;
+    max-width: 80px;
+    max-height: 25px;
+    top: 10px;
+    right: 10px;
 }

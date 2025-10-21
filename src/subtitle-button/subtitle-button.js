@@ -40,21 +40,27 @@ Player.provide('subtitle-button',
 
 /* Translations for this module */
 Player.translate("close_captioning",{
-    en: "Closed captioning"
+    en: "Closed captioning",
+    sv: "Textning"
 });
 Player.translate("closed_captions_in",{
-    en: "Closed captions in"
+    en: "Closed captions in",
+    sv: "Textning på"
 });
 Player.translate("disable_closed_captioning",{
-    en: "Disable closed captioning"
+    en: "Disable closed captioning",
+    sv: "Stäng av textning"
 });
 Player.translate("none",{
-    en: "None"
+    en: "None",
+    sv: "Ingen"
 });
 
 Player.translate("subtitle_on",{
-  en: "Captions button. The captions are turned on."
+  en: "Captions button. The captions are turned on.",
+  sv: "Textningsknapp. Textning är påslagen."
 });
 Player.translate("subtitle_off",{
-  en: "Captions button. The captions are turned off."
+  en: "Captions button. The captions are turned off.",
+  sv: "Textningsknapp. Textning är avstängd."
 });
