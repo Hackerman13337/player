@@ -405,7 +405,7 @@ ul.button-menu-selection li.selected button,
   background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Ensure all buttons, icons, and text are fully opaque */
+/* Ensure all buttons, icons, and text are fully opaque and visible */
 .tray-left > *,
 .tray-right > *,
 .tray-left button,
@@ -414,6 +414,17 @@ ul.button-menu-selection li.selected button,
 .tray-right button::after,
 .time-container {
   opacity: 1 !important;
+}
+
+/* Force white/light colors for icons and text on dark background */
+.tray-left button::after,
+.tray-right button::after {
+  filter: var(--icon-color-filter) !important;
+  -webkit-filter: var(--icon-color-filter) !important;
+}
+
+.time-container {
+  color: white !important;
 }
 
 .tray-left, .tray-left .button-container {
