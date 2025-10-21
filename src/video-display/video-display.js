@@ -915,6 +915,14 @@ Player.provide('video-display',
           }
       });
 
+      // Add click-to-play/pause on video canvas
+      $this.canvas.on('click', function(e){
+          // Don't toggle if clicking on controls or other UI elements
+          if($(e.target).closest('.tray-scrubber, .tray-left, .tray-right, button').length === 0) {
+              Player.set('playing', !Player.get('playing'));
+          }
+      });
+
       return $this;
   }
 );

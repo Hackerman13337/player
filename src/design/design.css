@@ -396,7 +396,7 @@ ul.button-menu-selection li.selected button,
 }
 #traysub {
   display: flex;
-  margin: 0 0 var(--tray-margin) 0;
+  margin: 0;
 }
 .tray-left,
 .tray-scrubber,
