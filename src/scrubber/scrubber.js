@@ -30,7 +30,7 @@ Player.provide('scrubber',
       $this.scrubberContainer = $this.container.find('.scrubber-container');
       $this.bufferContainer = $this.container.find('.scrubber-buffer').css({"opacity": 0.2});
       $this.playContainer = $this.container.find('.scrubber-play');
-      $this.timeContainer = $this.container.closest('#tray').find('.time-container');
+      $this.timeContainer = $this.container.closest('#tray').find('.tray-left .time-container');
       $this.thumbnailContainer = $this.container.find('.scrubber-thumbnail');
       $this.thumbnailTime = $this.thumbnailContainer.find(".scrubber-thumbnail-time");
 
@@ -99,10 +99,9 @@ Player.provide('scrubber',
             $this.playContainer.css({
               width: (100.0 * Player.get('displayPlayProgress') / duration) + '%'
             });
-            $this.timeContainer.text( formatTime(Player.get('displayPlayProgress')) + ' / ' + formatTime(duration) );
-            $(".scrubber, .sections").css({
-              marginRight: $this.timeContainer.width() + 10
-            });
+            if($this.timeContainer && $this.timeContainer.length > 0) {
+              $this.timeContainer.text( formatTime(Player.get('displayPlayProgress')) + ' / ' + formatTime(duration) );
+            }
             $('.scrubber-track').attr('aria-valuetext', formatTimeToReadable(Player.get('displayPlayProgress')) + ' of ' + formatTimeToReadable(Player.get('duration')))
             break;
           case 'dvr':
@@ -112,10 +111,9 @@ Player.provide('scrubber',
             $this.playContainer.css({
               width: (100.0 * Player.get('displayPlayProgress') / duration) + '%'
             });
-            $(".scrubber, .sections").css({
-              marginRight: $this.timeContainer.width() + 16
-            });
-            $this.timeContainer.html( "<span>Live</span>" + Player.get('displayDvrTime') );
+            if($this.timeContainer && $this.timeContainer.length > 0) {
+              $this.timeContainer.html( "<span>Live</span>" + Player.get('displayDvrTime') );
+            }
             break;
           case 'live':
             $this.bufferContainer.css({
