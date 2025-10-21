@@ -75,11 +75,27 @@ Player.provide('big-play-button',
     }
 
     var _prevShow = false;
+    var _flashTimeout = null;
+
+    // Flash the big play button briefly when play/pause is clicked
+    var _flashBigPlay = function() {
+      $this.container.addClass("big-play-shown big-play-flash");
+      clearTimeout(_flashTimeout);
+      _flashTimeout = setTimeout(function() {
+        $this.container.removeClass("big-play-flash");
+        setTimeout(function() {
+          $this.container.removeClass("big-play-shown");
+        }, 100); // Quick fade out
+      }, 250); // Show for 250ms
+    };
+
     var _updateBigPlay = debounce(function(){
+      // Don't show big play button normally, only on initial load
       var show = (
         !$this.hideBigPlay &&
-        ($this.bigPlayPosition=='center' || !Player.get('showTray') || Player.get('currentTime')==0) &&
-        ((!Player.get("playing") && !Player.get("seeking")) || Player.get('bigPlayForPause')) &&
+        Player.get('currentTime')==0 &&
+        !Player.get("playing") &&
+        !Player.get("seeking") &&
         Player.get("video_playable") &&
         !Player.get("actionsShown")
       );
@@ -89,6 +105,16 @@ Player.provide('big-play-button',
         _prevShow = show;
       }
     }, 200);
+
+    // Flash big play button when play/pause state changes
+    var _lastPlayingState = Player.get('playing');
+    Player.bind('player:video:play player:video:pause', function() {
+      var currentPlaying = Player.get('playing');
+      if (currentPlaying !== _lastPlayingState && Player.get('currentTime') > 0) {
+        _flashBigPlay();
+      }
+      _lastPlayingState = currentPlaying;
+    });
 
     return $this;
   }

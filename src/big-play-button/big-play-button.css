@@ -35,6 +35,12 @@
   display: block;
   opacity: 1;
 }
+/* Flash variant: quick fade in/out when clicking play/pause */
+.player-big-play-button.big-play-flash .big-play-container {
+  display: block;
+  opacity: 1;
+  transition: opacity 80ms ease;
+}
 .block-big-play .player-big-play-button .big-play-container {
   display: none  !important;
   opacity: 0 !important;
