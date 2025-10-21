@@ -200,8 +200,22 @@ Player.provide('design',
                    window.clearTimeout(_trayTimeoutId);
                    $('body').removeClass("tray-shown");
                  };
+                 var _toggleTray = function(){
+                   if($('body').hasClass("tray-shown")){
+                     _hideTray();
+                   } else {
+                     _showTray();
+                   }
+                 };
                  $(document).mousemove(_showTray);
                  $(document).mouseleave(_hideTray);
+
+                 // On touch devices, toggle tray on canvas tap
+                 Player.bind('player:video:canvastap', function(){
+                   if($('body').hasClass('touch')) {
+                     _toggleTray();
+                   }
+                 });
 
                  /* Setter + Getter for alwaysShowTray */
                  Player.getter('alwaysShowTray', function(){

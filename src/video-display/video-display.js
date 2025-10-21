@@ -915,15 +915,14 @@ Player.provide('video-display',
           }
       });
 
-      // Add click-to-play/pause on video canvas (desktop only)
+      // Add click-to-play/pause on video canvas
       $this.canvas.on('click', function(e){
           // Don't toggle if clicking on controls or other UI elements
           if($(e.target).closest('.tray-scrubber, .tray-left, .tray-right, button').length === 0) {
-              // On touch devices, just show tray (don't toggle playback)
-              // User must click actual play/pause button to control playback
-              if(!$('body').hasClass('touch')) {
-                  Player.set('playing', !Player.get('playing'));
-              }
+              // Fire canvas tap event for tray toggle on touch devices
+              Player.fire('player:video:canvastap');
+              // Toggle playback on both touch and desktop
+              Player.set('playing', !Player.get('playing'));
           }
       });
 

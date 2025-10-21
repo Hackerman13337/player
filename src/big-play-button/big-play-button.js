@@ -90,14 +90,19 @@ Player.provide('big-play-button',
     };
 
     var _updateBigPlay = debounce(function(){
-      // Don't show big play button normally, only on initial load
+      var isTouchDevice = $('body').hasClass('touch');
+      var trayShown = $('body').hasClass('tray-shown');
+
+      // On touch devices: show big play button when tray is shown (during playback)
+      // On desktop: only show at start (currentTime == 0)
       var show = (
         !$this.hideBigPlay &&
-        Player.get('currentTime')==0 &&
-        !Player.get("playing") &&
-        !Player.get("seeking") &&
         Player.get("video_playable") &&
-        !Player.get("actionsShown")
+        !Player.get("actionsShown") &&
+        (
+          (isTouchDevice && trayShown) || // Touch: show with tray
+          (!isTouchDevice && Player.get('currentTime')==0 && !Player.get("playing") && !Player.get("seeking")) // Desktop: show at start only
+        )
       );
       if (show != _prevShow) {
         $this.container.toggle(show);
@@ -105,6 +110,16 @@ Player.provide('big-play-button',
         _prevShow = show;
       }
     }, 200);
+
+    // Update big play button when tray visibility changes (for touch devices)
+    var _trayObserver = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.attributeName === "class") {
+          _updateBigPlay();
+        }
+      });
+    });
+    _trayObserver.observe(document.body, { attributes: true });
 
     // Flash big play button when play/pause state changes
     var _lastPlayingState = Player.get('playing');
