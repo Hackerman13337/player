@@ -28,7 +28,7 @@
 .player-big-play-button .big-play-container {
   display: none;
   opacity: 0;
-  transition: opacity 200ms linear;
+  transition: opacity 150ms ease;
 }
 /* Show big play button when tray is shown (before video starts) */
 .tray-shown .player-big-play-button.big-play-shown .big-play-container {
