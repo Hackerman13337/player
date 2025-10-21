@@ -402,6 +402,7 @@ ul.button-menu-selection li.selected button,
 .tray-scrubber,
 .tray-right {
   background: var(--tray-background-color);
+  opacity: 0.5;
 }
 
 .tray-left, .tray-left .button-container {
