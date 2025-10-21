@@ -159,7 +159,7 @@ Player.provide('scrubber',
       }
 
       // Set thumbnail dimensions
-      _thumbnailWidth = 94;
+      _thumbnailWidth = 160;
       _thumbnailHeight = Player.get("video_frames_height") * _thumbnailWidth / Player.get("video_frames_width");
       $this.thumbnailContainer.css({
         width:_thumbnailWidth,
