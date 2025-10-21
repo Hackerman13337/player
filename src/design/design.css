@@ -467,7 +467,7 @@ ul.button-menu-selection li.selected button,
 */
 .tray-left {
   flex: 0 0 auto;
-  padding-left: 110px;
+  padding-left: 0;
   position: relative;
 }
 .tray-left .play-button {
@@ -488,8 +488,12 @@ ul.button-menu-selection li.selected button,
 .tray-scrubber {
   width: 100%;
   margin: 0 0 3px 0;
-  padding: 3px 0;
+  padding: 3px 0 3px 0;
   height: auto;
+}
+.tray-scrubber .scrubber-container {
+  padding: 0;
+  margin: 0;
 }
 /* === /tray === */
 
@@ -577,7 +581,7 @@ ul.button-menu-selection li.selected button,
 .time-container {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: calc(var(--tray-play-button-width) + 38px + 10px); /* Play button + volume button + spacing */
   height: var(--tray-height);
   font-size: 14px;
   line-height: var(--tray-height);
