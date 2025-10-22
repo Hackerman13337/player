@@ -31,13 +31,12 @@
   transition: opacity 200ms ease-out;
 }
 /* Show big play button when tray is shown (before video starts) */
-.tray-shown .player-big-play-button.big-play-shown .big-play-container,
-.tray-shown .player-big-play-button .big-play-container.big-play-shown {
+.tray-shown .player-big-play-button.big-play-shown .big-play-container {
   display: block;
   opacity: 1;
 }
 /* Flash variant: Fade in growing, then fade out (desktop only) */
-.player-big-play-button .big-play-container.big-play-flash {
+.player-big-play-button.big-play-flash .big-play-container {
   display: block !important;
   opacity: 1;
   animation: big-play-pop 600ms ease-out;
