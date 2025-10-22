@@ -195,7 +195,15 @@ Player.provide('design',
                  var _showTray = function(){
                    window.clearTimeout(_trayTimeoutId);
                    $('body').addClass("tray-shown");
-                   _trayTimeoutId = window.setTimeout(_hideTray, 5000);
+
+                   // On touch devices, only auto-hide if video is playing
+                   // When paused, keep tray visible until user manually toggles it
+                   var isTouchDevice = $('body').hasClass('touch');
+                   var isPlaying = Player.get('playing');
+
+                   if(!isTouchDevice || isPlaying) {
+                     _trayTimeoutId = window.setTimeout(_hideTray, 5000);
+                   }
                  };
                  var _hideTray = function(){
                    if($this.alwaysShowTray) return;
@@ -224,6 +232,24 @@ Player.provide('design',
                    if($('body').hasClass('touch')) {
                      console.log('Toggling tray...');
                      _toggleTray();
+                   }
+                 });
+
+                 // When video starts playing on touch device, start auto-hide timer if tray is shown
+                 Player.bind('player:video:play player:video:playing', function(){
+                   var isTouchDevice = $('body').hasClass('touch');
+                   var trayShown = $('body').hasClass('tray-shown');
+                   if(isTouchDevice && trayShown) {
+                     window.clearTimeout(_trayTimeoutId);
+                     _trayTimeoutId = window.setTimeout(_hideTray, 5000);
+                   }
+                 });
+
+                 // When video pauses on touch device, keep tray visible (clear auto-hide timer)
+                 Player.bind('player:video:pause', function(){
+                   var isTouchDevice = $('body').hasClass('touch');
+                   if(isTouchDevice) {
+                     window.clearTimeout(_trayTimeoutId);
                    }
                  });
 

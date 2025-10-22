@@ -28,18 +28,21 @@
 .player-big-play-button .big-play-container {
   display: none;
   opacity: 0;
-  transition: opacity 150ms ease;
+  transform: scale(0.95);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
 }
 /* Show big play button when tray is shown (before video starts) */
 .tray-shown .player-big-play-button.big-play-shown .big-play-container {
   display: block;
   opacity: 1;
+  transform: scale(1);
 }
 /* Flash variant: quick fade in/out when clicking play/pause */
 .player-big-play-button.big-play-flash .big-play-container {
   display: block;
   opacity: 1;
-  transition: opacity 80ms ease;
+  transform: scale(1);
+  transition: opacity 150ms ease-out, transform 150ms ease-out;
 }
 .block-big-play .player-big-play-button .big-play-container {
   display: none  !important;
@@ -83,7 +86,10 @@
 .big-play-container .button-container > .big-play-button {
   width: 100%;
   height: 100%;
-  transition: background-color 100ms linear;
+  transition: background-color 150ms ease-in-out, transform 150ms ease-in-out;
+}
+.big-play-container .button-container > .big-play-button:active {
+  transform: scale(0.95);
 }
 .big-play-button::after, .loop-play-button::after {
   background-size: auto 130%;

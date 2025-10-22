@@ -79,13 +79,19 @@ Player.provide('big-play-button',
 
     // Flash the big play button briefly when play/pause is clicked
     var _flashBigPlay = function() {
+      var isTouchDevice = $('body').hasClass('touch');
+
       $this.container.addClass("big-play-shown big-play-flash");
       clearTimeout(_flashTimeout);
       _flashTimeout = setTimeout(function() {
         $this.container.removeClass("big-play-flash");
-        setTimeout(function() {
-          $this.container.removeClass("big-play-shown");
-        }, 100); // Quick fade out
+        // On touch devices, keep big play button visible (controlled by tray)
+        // On desktop, hide it after flash
+        if(!isTouchDevice) {
+          setTimeout(function() {
+            $this.container.removeClass("big-play-shown");
+          }, 100); // Quick fade out
+        }
       }, 250); // Show for 250ms
     };
 
@@ -109,7 +115,7 @@ Player.provide('big-play-button',
         $this.container.toggleClass("big-play-shown", show);
         _prevShow = show;
       }
-    }, 200);
+    }, 50);
 
     // Update big play button when tray visibility changes (for touch devices)
     var _trayObserver = new MutationObserver(function(mutations) {
