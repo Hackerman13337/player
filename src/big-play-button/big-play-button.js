@@ -95,18 +95,13 @@ Player.provide('big-play-button',
       $this.container.css('display', 'block');
 
       // Force element to be visible with inline styles (bypasses all CSS)
+      // Parent is already centered, so child doesn't need positioning
       bigPlayContainer.css({
         'display': 'block',
         'opacity': '1',
         'visibility': 'visible',
         'background': 'red',
-        'z-index': '99999',
-        'position': 'absolute',
-        'top': '50%',
-        'left': '50%',
-        'transform': 'translate(-50%, -50%)',
-        'width': '100px',
-        'height': '60px'
+        'z-index': '99999'
       });
 
       clearTimeout(_flashTimeout);
@@ -119,13 +114,7 @@ Player.provide('big-play-button',
           'opacity': '',
           'visibility': '',
           'background': '',
-          'z-index': '',
-          'position': '',
-          'top': '',
-          'left': '',
-          'transform': '',
-          'width': '',
-          'height': ''
+          'z-index': ''
         });
       }, 600);
     };
