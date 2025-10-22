@@ -106,6 +106,13 @@ Player.provide('big-play-button',
         'height': '60px'
       });
 
+      console.log('After setting styles, computed display:', bigPlayContainer.css('display'));
+      console.log('After setting styles, computed opacity:', bigPlayContainer.css('opacity'));
+      console.log('After setting styles, computed visibility:', bigPlayContainer.css('visibility'));
+      console.log('Parent container:', $this.container);
+      console.log('Parent display:', $this.container.css('display'));
+      console.log('Parent visibility:', $this.container.css('visibility'));
+
       clearTimeout(_flashTimeout);
       _flashTimeout = setTimeout(function() {
         console.log('Hiding flash');
