@@ -38,8 +38,7 @@
 /* Flash variant: Fade in growing, then fade out (desktop only) */
 .player-big-play-button.big-play-flash .big-play-container {
   display: block !important;
-  opacity: 1;
-  animation: big-play-pop 600ms ease-out;
+  animation: big-play-pop 600ms ease-out forwards;
 }
 
 @keyframes big-play-pop {
