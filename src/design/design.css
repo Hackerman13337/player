@@ -389,7 +389,7 @@ ul.button-menu-selection li.selected button,
   transition: opacity 200ms ease;
   z-index: 100;
   color: var(--tray-text-color);
-  background: var(--tray-full-background-color);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
   display: flex;
   flex-direction: column;
   padding: 0 12px 10px 12px;
@@ -408,8 +408,7 @@ ul.button-menu-selection li.selected button,
 }
 .tray-left,
 .tray-right {
-  background: var(--tray-background-color) !important;
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background: transparent !important;
   display: flex;
 }
 .tray-scrubber {
