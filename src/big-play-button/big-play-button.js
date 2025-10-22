@@ -89,7 +89,10 @@ Player.provide('big-play-button',
 
       // Find the actual .big-play-container element inside $this.container
       var bigPlayContainer = $this.container.find('.big-play-container');
-      console.log('Flashing with inline styles:', bigPlayContainer);
+      console.log('Flashing big play!');
+
+      // CRITICAL: Parent must be visible for child to show!
+      $this.container.css('display', 'block');
 
       // Force element to be visible with inline styles (bypasses all CSS)
       bigPlayContainer.css({
@@ -106,16 +109,11 @@ Player.provide('big-play-button',
         'height': '60px'
       });
 
-      console.log('After setting styles, computed display:', bigPlayContainer.css('display'));
-      console.log('After setting styles, computed opacity:', bigPlayContainer.css('opacity'));
-      console.log('After setting styles, computed visibility:', bigPlayContainer.css('visibility'));
-      console.log('Parent container:', $this.container);
-      console.log('Parent display:', $this.container.css('display'));
-      console.log('Parent visibility:', $this.container.css('visibility'));
-
       clearTimeout(_flashTimeout);
       _flashTimeout = setTimeout(function() {
         console.log('Hiding flash');
+        // Reset both parent and child
+        $this.container.css('display', '');
         bigPlayContainer.css({
           'display': '',
           'opacity': '',
