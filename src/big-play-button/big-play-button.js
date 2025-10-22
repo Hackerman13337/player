@@ -89,16 +89,40 @@ Player.provide('big-play-button',
 
       // Find the actual .big-play-container element inside $this.container
       var bigPlayContainer = $this.container.find('.big-play-container');
-      console.log('Adding big-play-flash class to big-play-container:', bigPlayContainer);
-      console.log('Container classes before:', bigPlayContainer.attr('class'));
-      bigPlayContainer.addClass("big-play-shown big-play-flash");
-      console.log('Container classes after:', bigPlayContainer.attr('class'));
+      console.log('Flashing with inline styles:', bigPlayContainer);
+
+      // Force element to be visible with inline styles (bypasses all CSS)
+      bigPlayContainer.css({
+        'display': 'block',
+        'opacity': '1',
+        'visibility': 'visible',
+        'background': 'red',
+        'z-index': '99999',
+        'position': 'absolute',
+        'top': '50%',
+        'left': '50%',
+        'transform': 'translate(-50%, -50%)',
+        'width': '100px',
+        'height': '60px'
+      });
 
       clearTimeout(_flashTimeout);
       _flashTimeout = setTimeout(function() {
-        console.log('Removing big-play-flash class');
-        bigPlayContainer.removeClass("big-play-flash big-play-shown");
-      }, 600); // Match CSS animation duration
+        console.log('Hiding flash');
+        bigPlayContainer.css({
+          'display': '',
+          'opacity': '',
+          'visibility': '',
+          'background': '',
+          'z-index': '',
+          'position': '',
+          'top': '',
+          'left': '',
+          'transform': '',
+          'width': '',
+          'height': ''
+        });
+      }, 600);
     };
 
     var _updateBigPlay = debounce(function(){
