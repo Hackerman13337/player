@@ -13,14 +13,14 @@
   --tray-background-color: rgba(0, 0, 0, 0.5);
   --tray-full-background-color: transparent;
   --tray-margin: 0px;
-  --tray-height: 46px;
+  --tray-height: 40px;
   --tray-button-border:0px;
   --tray-button-highlight-background-color:transparent;
   --tray-button-highlight-border-radius:8px;
   --tray-outer-border-radius: 12px;
   --tray-inner-border-radius: 8px;
   --tray-play-button-gap: 0px;
-  --tray-play-button-width: 95px;
+  --tray-play-button-width: 80px;
   --tray-play-button-border-radius: 8px;
   --tray-play-button-background-color: transparent;
   --tray-play-button-color-filter: var(--icon-color-filter);
@@ -392,7 +392,7 @@ ul.button-menu-selection li.selected button,
   background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
   display: flex;
   flex-direction: column;
-  padding: 0 12px 10px 12px;
+  padding: 0 12px 6px 12px;
 }
 .tray-shown #tray {
   opacity: 1;
@@ -468,7 +468,7 @@ ul.button-menu-selection li.selected button,
 */
 .tray-left {
   flex: 0 0 auto;
-  padding: 6px 10px;
+  padding: 4px 10px;
   position: relative;
 }
 .tray-left .play-button {
@@ -476,20 +476,20 @@ ul.button-menu-selection li.selected button,
   transition: background-color 200ms linear;
 }
 .tray-left .button-container > button {
-  width: 45px;
+  width: 38px;
 }
 .tray-right {
   flex: 0 0 auto;
   margin-left: auto;
-  padding: 6px 10px;
+  padding: 4px 10px;
 }
 .tray-right .button-container > button, .tray-right .button-container > button img {
-  width: 45px;
+  width: 38px;
 }
 .tray-scrubber {
   width: 100%;
   margin: 0 0 0 0;
-  padding: 2px 0 0 0;
+  padding: 0 0 0 0;
   height: auto;
   box-sizing: border-box;
 }
@@ -517,7 +517,7 @@ ul.button-menu-selection li.selected button,
 /* === Module: Scrubber === */
 .scrubber-container {
   position:relative;
-  height: 20px;
+  height: 16px;
 }
 .scrubber {
   position: relative;
@@ -610,10 +610,10 @@ ul.button-menu-selection li.selected button,
 .time-container {
   position: relative;
   height: var(--tray-height);
-  font-size: 14px;
+  font-size: 12px;
   line-height: var(--tray-height);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
   white-space: nowrap;
   pointer-events: none;
   display: flex;
@@ -1107,7 +1107,7 @@ body.overlay-shown .button-container-share {
 
 /* Tray left buttons */
 .tray-left button::after {
-  background-size: 75px;
+  background-size: 65px;
   filter: var(--tray-play-button-color-filter);
   -webkit-filter: var(--tray-play-button-color-filter);
 }
@@ -1131,7 +1131,7 @@ body.overlay-shown .button-container-share {
 
 /* Tray right buttons */
 .tray-right button::after {
-  background-size: 45px 45px;
+  background-size: 38px 38px;
   filter: var(--icon-color-filter);
   -webkit-filter: var(--icon-color-filter);
 }
