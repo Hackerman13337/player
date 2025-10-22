@@ -36,7 +36,7 @@
   opacity: 1;
 }
 /* Flash variant: Fade in growing, then fade out (desktop only) */
-.player-big-play-button.big-play-flash .big-play-container {
+.big-play-container.big-play-flash {
   display: block !important;
   opacity: 1 !important;
   transition: none !important;

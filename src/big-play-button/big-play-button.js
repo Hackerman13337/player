@@ -87,15 +87,17 @@ Player.provide('big-play-button',
         return;
       }
 
-      console.log('Adding big-play-flash class to container:', $this.container);
-      console.log('Container classes before:', $this.container.attr('class'));
-      $this.container.addClass("big-play-shown big-play-flash");
-      console.log('Container classes after:', $this.container.attr('class'));
+      // Find the actual .big-play-container element inside $this.container
+      var bigPlayContainer = $this.container.find('.big-play-container');
+      console.log('Adding big-play-flash class to big-play-container:', bigPlayContainer);
+      console.log('Container classes before:', bigPlayContainer.attr('class'));
+      bigPlayContainer.addClass("big-play-shown big-play-flash");
+      console.log('Container classes after:', bigPlayContainer.attr('class'));
 
       clearTimeout(_flashTimeout);
       _flashTimeout = setTimeout(function() {
         console.log('Removing big-play-flash class');
-        $this.container.removeClass("big-play-flash big-play-shown");
+        bigPlayContainer.removeClass("big-play-flash big-play-shown");
       }, 600); // Match CSS animation duration
     };
 
