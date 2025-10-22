@@ -921,8 +921,10 @@ Player.provide('video-display',
           if($(e.target).closest('.tray-scrubber, .tray-left, .tray-right, button').length === 0) {
               // Fire canvas tap event for tray toggle on touch devices
               Player.fire('player:video:canvastap');
-              // Toggle playback on both touch and desktop
-              Player.set('playing', !Player.get('playing'));
+              // Only toggle playback on desktop, not on touch devices
+              if(!$('body').hasClass('touch')) {
+                  Player.set('playing', !Player.get('playing'));
+              }
           }
       });
 
