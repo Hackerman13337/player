@@ -81,18 +81,14 @@ Player.provide('big-play-button',
     var _flashBigPlay = function() {
       var isTouchDevice = $('body').hasClass('touch');
 
+      // Only flash on desktop, not on touch devices
+      if(isTouchDevice) return;
+
       $this.container.addClass("big-play-shown big-play-flash");
       clearTimeout(_flashTimeout);
       _flashTimeout = setTimeout(function() {
-        $this.container.removeClass("big-play-flash");
-        // On touch devices, keep big play button visible (controlled by tray)
-        // On desktop, hide it after flash
-        if(!isTouchDevice) {
-          setTimeout(function() {
-            $this.container.removeClass("big-play-shown");
-          }, 100); // Quick fade out
-        }
-      }, 250); // Show for 250ms
+        $this.container.removeClass("big-play-flash big-play-shown");
+      }, 600); // Match CSS animation duration
     };
 
     var _updateBigPlay = debounce(function(){
@@ -129,9 +125,20 @@ Player.provide('big-play-button',
 
     // Flash big play button when play/pause state changes
     var _lastPlayingState = Player.get('playing');
-    Player.bind('player:video:play player:video:pause', function() {
+    var _videoHasStarted = false;
+
+    Player.bind('player:video:play player:video:pause player:video:playing', function() {
       var currentPlaying = Player.get('playing');
-      if (currentPlaying !== _lastPlayingState && Player.get('currentTime') > 0) {
+      var currentTime = Player.get('currentTime');
+
+      // Mark video as started once we're past the beginning
+      if (currentTime > 0) {
+        _videoHasStarted = true;
+      }
+
+      // Flash when play state changes, but not on initial load (only after video has started)
+      if (currentPlaying !== _lastPlayingState && _videoHasStarted) {
+        console.log('Flashing big play button - playing:', currentPlaying);
         _flashBigPlay();
       }
       _lastPlayingState = currentPlaying;
