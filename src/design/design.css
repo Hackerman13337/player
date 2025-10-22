@@ -13,7 +13,7 @@
   --tray-background-color: rgba(0, 0, 0, 0.5);
   --tray-full-background-color: transparent;
   --tray-margin: 0px;
-  --tray-height: 60px;
+  --tray-height: 52px;
   --tray-button-border:0px;
   --tray-button-highlight-background-color:transparent;
   --tray-button-highlight-border-radius:8px;
@@ -392,7 +392,7 @@ ul.button-menu-selection li.selected button,
   background: var(--tray-full-background-color);
   display: flex;
   flex-direction: column;
-  padding: 0 12px;
+  padding: 0 12px 10px 12px;
 }
 .tray-shown #tray {
   opacity: 1;
@@ -489,8 +489,8 @@ ul.button-menu-selection li.selected button,
 }
 .tray-scrubber {
   width: 100%;
-  margin: 0 0 2px 0;
-  padding: 4px 0 2px 0;
+  margin: 0 0 0 0;
+  padding: 2px 0 0 0;
   height: auto;
   box-sizing: border-box;
 }
@@ -530,9 +530,9 @@ ul.button-menu-selection li.selected button,
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  height: 6px;
-  border-radius: 3px;
-  overflow: hidden;
+  height: 8px;
+  border-radius: 4px;
+  overflow: visible;
 }
 .scrubber-buffer, .scrubber-play {
   position:absolute;
@@ -549,7 +549,19 @@ ul.button-menu-selection li.selected button,
 .scrubber-buffer,
 .scrubber-play {
   background-color: var(--scrubber-color);
-  border-radius: 3px;
+  border-radius: 4px;
+}
+.scrubber-play::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
 }
 .scrubber-buffer {
   opacity: 0.2;
