@@ -571,9 +571,10 @@ ul.button-menu-selection li.selected button,
   display:none;
   position:absolute;
   left: 0;
-  bottom: 15px;
+  bottom: 30px;
   width: 220px;
   border:3px solid var(--tray-background-color);
+  border-radius: 8px;
   overflow: hidden;
 }
 .tray-shown .scrubber:hover .scrubber-thumbnail {
