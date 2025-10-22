@@ -13,7 +13,7 @@
   --tray-background-color: rgba(0, 0, 0, 0.5);
   --tray-full-background-color: transparent;
   --tray-margin: 0px;
-  --tray-height: 52px;
+  --tray-height: 46px;
   --tray-button-border:0px;
   --tray-button-highlight-background-color:transparent;
   --tray-button-highlight-border-radius:8px;
@@ -469,7 +469,7 @@ ul.button-menu-selection li.selected button,
 */
 .tray-left {
   flex: 0 0 auto;
-  padding: 8px 10px;
+  padding: 6px 10px;
   position: relative;
 }
 .tray-left .play-button {
@@ -482,7 +482,7 @@ ul.button-menu-selection li.selected button,
 .tray-right {
   flex: 0 0 auto;
   margin-left: auto;
-  padding: 8px 10px;
+  padding: 6px 10px;
 }
 .tray-right .button-container > button, .tray-right .button-container > button img {
   width: 45px;
