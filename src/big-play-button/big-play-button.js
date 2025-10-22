@@ -78,7 +78,7 @@ Player.provide('big-play-button',
     var _flashTimeout = null;
 
     // Flash the big play button briefly when play/pause is clicked
-    var _flashBigPlay = function() {
+    var _flashBigPlay = function(isPlaying) {
       var isTouchDevice = $('body').hasClass('touch');
 
       // Only flash on desktop, not on touch devices
@@ -89,9 +89,19 @@ Player.provide('big-play-button',
 
       // Find the actual .big-play-container element inside $this.container
       var bigPlayContainer = $this.container.find('.big-play-container');
+      var playButton = bigPlayContainer.find('.big-play-button');
 
       // CRITICAL: Parent must be visible for child to show!
       $this.container.css('display', 'block');
+
+      // Invert icon: show what just happened, not current state
+      // If now playing, show play icon (remove .pause)
+      // If now paused, show pause icon (add .pause)
+      if(isPlaying) {
+        playButton.removeClass('pause');
+      } else {
+        playButton.addClass('pause');
+      }
 
       // Set initial state: small and invisible
       bigPlayContainer.css({
@@ -126,6 +136,12 @@ Player.provide('big-play-button',
             'transform': '',
             'transition': ''
           });
+          // Reset icon to correct state (will be set by normal update logic)
+          if(isPlaying) {
+            playButton.addClass('pause');
+          } else {
+            playButton.removeClass('pause');
+          }
         }, 150);
       }, 400);
     };
@@ -178,7 +194,7 @@ Player.provide('big-play-button',
       // Flash when play state changes, but not on initial load (only after video has started)
       if (currentPlaying !== _lastPlayingState && _videoHasStarted) {
         console.log('Flashing big play button - playing:', currentPlaying);
-        _flashBigPlay();
+        _flashBigPlay(currentPlaying);
       }
       _lastPlayingState = currentPlaying;
     });
