@@ -82,11 +82,19 @@ Player.provide('big-play-button',
       var isTouchDevice = $('body').hasClass('touch');
 
       // Only flash on desktop, not on touch devices
-      if(isTouchDevice) return;
+      if(isTouchDevice) {
+        console.log('Skipping flash - touch device');
+        return;
+      }
 
+      console.log('Adding big-play-flash class to container:', $this.container);
+      console.log('Container classes before:', $this.container.attr('class'));
       $this.container.addClass("big-play-shown big-play-flash");
+      console.log('Container classes after:', $this.container.attr('class'));
+
       clearTimeout(_flashTimeout);
       _flashTimeout = setTimeout(function() {
+        console.log('Removing big-play-flash class');
         $this.container.removeClass("big-play-flash big-play-shown");
       }, 600); // Match CSS animation duration
     };
