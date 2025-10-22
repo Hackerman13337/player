@@ -89,34 +89,45 @@ Player.provide('big-play-button',
 
       // Find the actual .big-play-container element inside $this.container
       var bigPlayContainer = $this.container.find('.big-play-container');
-      console.log('Flashing big play!');
 
       // CRITICAL: Parent must be visible for child to show!
       $this.container.css('display', 'block');
 
-      // Force element to be visible with inline styles (bypasses all CSS)
-      // Parent is already centered, so child doesn't need positioning
+      // Set initial state: small and invisible
       bigPlayContainer.css({
         'display': 'block',
-        'opacity': '1',
-        'visibility': 'visible',
-        'background': 'red',
-        'z-index': '99999'
+        'opacity': '0',
+        'transform': 'scale(0.7)',
+        'transition': 'none'
       });
 
+      // Animate in: fade in while growing
+      setTimeout(function() {
+        bigPlayContainer.css({
+          'transition': 'opacity 150ms ease-out, transform 150ms ease-out',
+          'opacity': '1',
+          'transform': 'scale(1)'
+        });
+      }, 10);
+
+      // Hold for a moment, then fade out
       clearTimeout(_flashTimeout);
       _flashTimeout = setTimeout(function() {
-        console.log('Hiding flash');
-        // Reset both parent and child
-        $this.container.css('display', '');
         bigPlayContainer.css({
-          'display': '',
-          'opacity': '',
-          'visibility': '',
-          'background': '',
-          'z-index': ''
+          'opacity': '0'
         });
-      }, 600);
+
+        // Clean up after fade out completes
+        setTimeout(function() {
+          $this.container.css('display', '');
+          bigPlayContainer.css({
+            'display': '',
+            'opacity': '',
+            'transform': '',
+            'transition': ''
+          });
+        }, 150);
+      }, 400);
     };
 
     var _updateBigPlay = debounce(function(){
