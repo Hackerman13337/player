@@ -476,7 +476,7 @@ ul.button-menu-selection li.selected button,
   transition: background-color 200ms linear;
 }
 .tray-left .button-container > button {
-  width: 38px;
+  width: 42px;
 }
 .tray-right {
   flex: 0 0 auto;
@@ -484,7 +484,7 @@ ul.button-menu-selection li.selected button,
   padding: 4px 10px;
 }
 .tray-right .button-container > button, .tray-right .button-container > button img {
-  width: 38px;
+  width: 42px;
 }
 .tray-scrubber {
   width: 100%;
@@ -610,7 +610,7 @@ ul.button-menu-selection li.selected button,
 .time-container {
   position: relative;
   height: var(--tray-height);
-  font-size: 12px;
+  font-size: 13px;
   line-height: var(--tray-height);
   padding-left: 8px;
   padding-right: 8px;
@@ -1131,7 +1131,7 @@ body.overlay-shown .button-container-share {
 
 /* Tray right buttons */
 .tray-right button::after {
-  background-size: 38px 38px;
+  background-size: 42px 42px;
   filter: var(--icon-color-filter);
   -webkit-filter: var(--icon-color-filter);
 }
