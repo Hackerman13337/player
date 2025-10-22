@@ -35,11 +35,30 @@
   display: block;
   opacity: 1;
 }
-/* Flash variant: quick fade in/out when clicking play/pause */
+/* Flash variant: YouTube-style pop in/out animation when clicking play/pause */
 .player-big-play-button.big-play-flash .big-play-container {
   display: block;
   opacity: 1;
-  transition: opacity 150ms ease-out;
+  animation: big-play-pop 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes big-play-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
 }
 .block-big-play .player-big-play-button .big-play-container {
   display: none  !important;
