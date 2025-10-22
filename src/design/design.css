@@ -484,7 +484,7 @@ ul.button-menu-selection li.selected button,
   padding: 4px 10px;
 }
 .tray-right .button-container > button, .tray-right .button-container > button img {
-  width: 42px;
+  width: 48px;
 }
 .tray-scrubber {
   width: 100%;
@@ -1131,7 +1131,7 @@ body.overlay-shown .button-container-share {
 
 /* Tray right buttons */
 .tray-right button::after {
-  background-size: 42px 42px;
+  background-size: 48px 48px;
   filter: var(--icon-color-filter);
   -webkit-filter: var(--icon-color-filter);
 }
