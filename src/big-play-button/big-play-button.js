@@ -94,15 +94,6 @@ Player.provide('big-play-button',
       // CRITICAL: Parent must be visible for child to show!
       $this.container.css('display', 'block');
 
-      // Invert icon: show what just happened, not current state
-      // If now playing, show play icon (remove .pause)
-      // If now paused, show pause icon (add .pause)
-      if(isPlaying) {
-        playButton.removeClass('pause');
-      } else {
-        playButton.addClass('pause');
-      }
-
       // Set initial state: small and invisible
       bigPlayContainer.css({
         'display': 'block',
@@ -110,6 +101,21 @@ Player.provide('big-play-button',
         'transform': 'scale(0.7)',
         'transition': 'none'
       });
+
+      // Invert icon: show what just happened, not current state
+      // Wait a moment for normal update logic to finish, then override
+      setTimeout(function() {
+        console.log('Setting icon for isPlaying:', isPlaying);
+        console.log('Button classes before:', playButton.attr('class'));
+        // If now playing, show play icon (remove .pause)
+        // If now paused, show pause icon (add .pause)
+        if(isPlaying) {
+          playButton.removeClass('pause stop');
+        } else {
+          playButton.addClass('pause');
+        }
+        console.log('Button classes after:', playButton.attr('class'));
+      }, 5);
 
       // Animate in: fade in while growing
       setTimeout(function() {
