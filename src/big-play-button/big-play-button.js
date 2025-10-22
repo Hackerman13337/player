@@ -76,6 +76,8 @@ Player.provide('big-play-button',
 
     var _prevShow = false;
     var _flashTimeout = null;
+    var _flashTimeout2 = null;
+    var _flashTimeout3 = null;
 
     // Flash the big play button briefly when play/pause is clicked
     var _flashBigPlay = function(isPlaying) {
@@ -87,6 +89,11 @@ Player.provide('big-play-button',
         return;
       }
 
+      // Clear all previous timeouts to prevent overlap
+      clearTimeout(_flashTimeout);
+      clearTimeout(_flashTimeout2);
+      clearTimeout(_flashTimeout3);
+
       // Find the actual .big-play-container element inside $this.container
       var bigPlayContainer = $this.container.find('.big-play-container');
       var playButton = bigPlayContainer.find('.big-play-button');
@@ -94,7 +101,7 @@ Player.provide('big-play-button',
       // CRITICAL: Parent must be visible for child to show!
       $this.container.css('display', 'block');
 
-      // Set initial state: small and invisible
+      // Completely reset to initial state first (no transition)
       bigPlayContainer.css({
         'display': 'block',
         'opacity': '0',
@@ -102,11 +109,13 @@ Player.provide('big-play-button',
         'transition': 'none'
       });
 
+      // Force reflow to ensure styles are applied
+      bigPlayContainer[0].offsetHeight;
+
       // Invert icon: show what just happened, not current state
       // Wait a moment for normal update logic to finish, then override
-      setTimeout(function() {
+      _flashTimeout3 = setTimeout(function() {
         console.log('Setting icon for isPlaying:', isPlaying);
-        console.log('Button classes before:', playButton.attr('class'));
         // If now playing, show play icon (remove .pause)
         // If now paused, show pause icon (add .pause)
         if(isPlaying) {
@@ -114,21 +123,19 @@ Player.provide('big-play-button',
         } else {
           playButton.addClass('pause');
         }
-        console.log('Button classes after:', playButton.attr('class'));
       }, 5);
 
       // Animate in: fade in while growing
-      setTimeout(function() {
+      _flashTimeout = setTimeout(function() {
         bigPlayContainer.css({
           'transition': 'opacity 150ms ease-out, transform 150ms ease-out',
           'opacity': '1',
           'transform': 'scale(1)'
         });
-      }, 10);
+      }, 20);
 
       // Hold for a moment, then fade out
-      clearTimeout(_flashTimeout);
-      _flashTimeout = setTimeout(function() {
+      _flashTimeout2 = setTimeout(function() {
         bigPlayContainer.css({
           'opacity': '0'
         });
@@ -149,7 +156,7 @@ Player.provide('big-play-button',
             playButton.removeClass('pause');
           }
         }, 150);
-      }, 400);
+      }, 420);
     };
 
     var _updateBigPlay = debounce(function(){
