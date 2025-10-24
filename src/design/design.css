@@ -1169,7 +1169,8 @@ body.overlay-shown .button-container-share {
   transition: transform 300ms ease-in-out;
   transform: rotate(0deg);
 }
-.quality-button[aria-expanded="true"]::after {
+.button-container:hover .quality-button::after,
+.button-container-active .quality-button::after {
   transform: rotate(90deg);
 }
 .volume-button-on::after {
