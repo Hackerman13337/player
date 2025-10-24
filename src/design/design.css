@@ -1166,7 +1166,7 @@ body.overlay-shown .button-container-share {
 }
 .quality-button::after {
   background-image: url('gear.svg');
-  transition: transform 300ms ease-in-out;
+  transition: transform 400ms ease-out;
   transform: rotate(0deg);
 }
 .button-container:hover .quality-button::after,
