@@ -11,6 +11,7 @@ Player.provide('quality-button',
   function(Player,$,opts){
     var $this = this;
     $.extend($this, opts);
+    var menuCloseTimeout = null;
 
     // Update UI when quality changes
     Player.bind('player:video:qualitychange', function(e){
@@ -23,6 +24,18 @@ Player.provide('quality-button',
                     right: ($this.buttonMenu.width()-30)/-2,
                     fontSize: $this.container.find("li").height()*qualityCount + 12
                 });
+            });
+
+            // Add gear rotation animation support
+            $this.container.on("mouseenter", function(){
+                clearTimeout(menuCloseTimeout);
+                $this.container.addClass("gear-rotating");
+            });
+
+            $this.container.on("mouseleave", function(){
+                menuCloseTimeout = setTimeout(function(){
+                    $this.container.removeClass("gear-rotating");
+                }, 400);
             });
         });
     });
