@@ -1171,7 +1171,7 @@ body.overlay-shown .button-container-share {
 }
 .button-container:hover .quality-button::after,
 .button-container-active .quality-button::after {
-  transform: rotate(90deg);
+  transform: rotate(45deg);
 }
 .volume-button-on::after {
   background-image: url('volume-on.svg');
