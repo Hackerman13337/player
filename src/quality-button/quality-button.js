@@ -35,12 +35,14 @@ Player.provide('quality-button',
             $this.container.on("mouseenter", function(){
                 clearTimeout(menuCloseTimeout);
                 $this.container.addClass("gear-rotating");
+                $('body').addClass("quality-gear-rotating");
             });
 
             $this.container.on("mouseleave", function(){
                 if (!qualityChanging) {
                     menuCloseTimeout = setTimeout(function(){
                         $this.container.removeClass("gear-rotating");
+                        $('body').removeClass("quality-gear-rotating");
                     }, 400);
                 }
             });
@@ -49,11 +51,13 @@ Player.provide('quality-button',
             $this.buttonMenu.find(".button-menu-item").on("click", function(){
                 qualityChanging = true;
                 clearTimeout(menuCloseTimeout);
+                $('body').addClass("quality-gear-rotating");
             });
 
             // Re-apply gear-rotating class if quality is changing
             if (qualityChanging) {
                 $this.container.addClass("gear-rotating");
+                $('body').addClass("quality-gear-rotating");
             }
         });
     });
@@ -65,6 +69,7 @@ Player.provide('quality-button',
                 if ($this.container) {
                     $this.container.removeClass("gear-rotating");
                 }
+                $('body').removeClass("quality-gear-rotating");
                 qualityChanging = false;
             }, 400);
         }

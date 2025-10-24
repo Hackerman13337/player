@@ -1171,7 +1171,8 @@ body.overlay-shown .button-container-share {
 }
 .button-container:hover .quality-button::after,
 .button-container-active .quality-button::after,
-.button-container.gear-rotating .quality-button::after {
+.button-container.gear-rotating .quality-button::after,
+body.quality-gear-rotating .quality-button::after {
   transform: rotate(45deg);
 }
 .volume-button-on::after {
