@@ -71,7 +71,7 @@ Player.provide('quality-button',
                 }
                 $('body').removeClass("quality-gear-rotating");
                 qualityChanging = false;
-            }, 400);
+            }, 200);
         }
     });
 
