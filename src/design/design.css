@@ -1166,12 +1166,13 @@ body.overlay-shown .button-container-share {
 }
 .quality-button::after {
   background-image: url('gear.svg');
-  transition: transform 400ms ease-out;
+  transition: transform 400ms ease-out 200ms;
   transform: rotate(0deg);
 }
 .button-container:hover .quality-button::after,
 .button-container-active .quality-button::after {
   transform: rotate(45deg);
+  transition-delay: 0ms;
 }
 .volume-button-on::after {
   background-image: url('volume-on.svg');
