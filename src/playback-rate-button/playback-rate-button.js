@@ -63,6 +63,16 @@ Player.provide('playback-rate-button',
     Player.getter('playbackRateMenuExpanded', function(){
       return $this.playbackRateMenuExpanded
     });
+    Player.getter('playbackRateLabel', function(){
+      var currentRate = Player.get('playbackRate');
+      var rates = Player.get('playbackRatesArray');
+      for (var i = 0; i < rates.length; i++) {
+        if (rates[i].rate === currentRate) {
+          return rates[i].label;
+        }
+      }
+      return '1x'; // Default fallback
+    });
 
     return $this;
   }
