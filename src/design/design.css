@@ -1166,6 +1166,11 @@ body.overlay-shown .button-container-share {
 }
 .quality-button::after {
   background-image: url('gear.svg');
+  transition: transform 300ms ease-in-out;
+  transform: rotate(0deg);
+}
+.quality-button[aria-expanded="true"]::after {
+  transform: rotate(90deg);
 }
 .volume-button-on::after {
   background-image: url('volume-on.svg');
