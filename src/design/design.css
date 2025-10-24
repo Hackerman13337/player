@@ -263,7 +263,13 @@ p {
   -webkit-filter: var(--icon-color-filter);
 }
 
-/* Playback rate label - show current speed */
+/* Playback rate button - show speed as text instead of icon */
+.playback-rate-button {
+  font-size: 14px !important;
+}
+.playback-rate-button::after {
+  display: none !important;
+}
 .playback-rate-label {
   position: relative;
   z-index: 1;
