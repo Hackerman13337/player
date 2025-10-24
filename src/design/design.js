@@ -211,12 +211,9 @@ Player.provide('design',
                    $('body').removeClass("tray-shown");
                  };
                  var _toggleTray = function(){
-                   console.log('_toggleTray called, current tray-shown:', $('body').hasClass("tray-shown"));
                    if($('body').hasClass("tray-shown")){
-                     console.log('Hiding tray');
                      _hideTray();
                    } else {
-                     console.log('Showing tray');
                      _showTray();
                    }
                  };

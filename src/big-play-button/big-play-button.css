@@ -35,42 +35,6 @@
   display: block;
   opacity: 1;
 }
-/* Flash variant: Fade in growing, then fade out (desktop only) */
-.big-play-container.big-play-flash {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  transition: none !important;
-  animation: big-play-pop 600ms ease-out forwards !important;
-  background: red !important; /* DEBUG: Test if this rule is applied */
-  z-index: 99999 !important;
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  width: 100px !important;
-  height: 60px !important;
-  pointer-events: none !important;
-}
-
-@keyframes big-play-pop {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.7);
-  }
-  25% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  75% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
 .block-big-play .player-big-play-button .big-play-container {
   display: none  !important;
   opacity: 0 !important;

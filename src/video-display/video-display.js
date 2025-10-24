@@ -858,7 +858,6 @@ Player.provide('video-display',
 
       /* Mischung overload */
       Player.setter('overloadMischungFile', function(misch) {
-        console.log('overloadMischungFile, misch =', misch);
         if ($this.displayDevice=='mischung' && $this.video && $this.video.mischung) {
           if(typeof(misch)=='string') {
             misch = JSON.parse(misch);
@@ -891,14 +890,12 @@ Player.provide('video-display',
           if(!v||v.type!="stream") return;
           $this.reconnectTimeoutId = window.setTimeout(function(){
               if(Player.get("videoElement").getStalled()||Player.get("videoElement").hlsjsFatalError){
-                  console.log('Attempting reconnecting to live stream, reconnectIntervalIndex =', $this.reconnectIntervalIndex);
                   if($this.reconnectIntervalIndex <= 15){
                       Player.get("videoElement").setSource(Player.get("videoElement").getSource(), null, null, false);
                       if(Player.get("video_playable")){
                           Player.set("playing",true);
                       }
                   } else {
-                      console.log('Attempting reconnecting to live stream by full reload');
                       Player.set("playing", false);
                       Player.get("video").reload();
                   }

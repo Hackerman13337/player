@@ -105,7 +105,7 @@ Player.provide('context-menu',{
         $this.render();
     });
     Player.setter('logVideoObject', function(value){
-        console.log(Player.get("video"));
+        // Video object logging removed
     });
 
 
