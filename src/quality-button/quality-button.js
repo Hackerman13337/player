@@ -65,13 +65,11 @@ Player.provide('quality-button',
     // When video starts loading after quality change, rotate gear back
     Player.bind('player:video:loadstart player:video:playing', function(e){
         if (qualityChanging) {
-            setTimeout(function(){
-                if ($this.container) {
-                    $this.container.removeClass("gear-rotating");
-                }
-                $('body').removeClass("quality-gear-rotating");
-                qualityChanging = false;
-            }, 200);
+            if ($this.container) {
+                $this.container.removeClass("gear-rotating");
+            }
+            $('body').removeClass("quality-gear-rotating");
+            qualityChanging = false;
         }
     });
 
