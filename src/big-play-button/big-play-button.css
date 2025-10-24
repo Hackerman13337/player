@@ -30,8 +30,8 @@
   opacity: 0;
   transition: opacity 200ms ease-out;
 }
-/* Show big play button when tray is shown (before video starts) */
-.tray-shown .player-big-play-button.big-play-shown .big-play-container {
+/* Show big play button before video starts */
+.player-big-play-button.big-play-shown .big-play-container {
   display: block;
   opacity: 1;
 }
