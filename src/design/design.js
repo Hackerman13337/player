@@ -228,9 +228,7 @@ Player.provide('design',
 
                  // On touch devices, toggle tray on canvas tap
                  Player.bind('player:video:canvastap', function(){
-                   console.log('Canvas tap event received, touch class:', $('body').hasClass('touch'));
                    if($('body').hasClass('touch')) {
-                     console.log('Toggling tray...');
                      _toggleTray();
                    }
                  });

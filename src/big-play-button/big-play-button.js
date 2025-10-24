@@ -85,7 +85,6 @@ Player.provide('big-play-button',
 
       // Only flash on desktop, not on touch devices
       if(isTouchDevice) {
-        console.log('Skipping flash - touch device');
         return;
       }
 
@@ -115,7 +114,6 @@ Player.provide('big-play-button',
       // Invert icon: show what just happened, not current state
       // Wait a moment for normal update logic to finish, then override
       _flashTimeout3 = setTimeout(function() {
-        console.log('Setting icon for isPlaying:', isPlaying);
         // If now playing, show play icon (remove .pause)
         // If now paused, show pause icon (add .pause)
         if(isPlaying) {
@@ -206,7 +204,6 @@ Player.provide('big-play-button',
 
       // Flash when play state changes, but not on initial load (only after video has started)
       if (currentPlaying !== _lastPlayingState && _videoHasStarted) {
-        console.log('Flashing big play button - playing:', currentPlaying);
         _flashBigPlay(currentPlaying);
       }
       _lastPlayingState = currentPlaying;
