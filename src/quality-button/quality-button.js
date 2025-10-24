@@ -44,6 +44,17 @@ Player.provide('quality-button',
                     }, 400);
                 }
             });
+
+            // Detect clicks on quality menu items
+            $this.buttonMenu.find(".button-menu-item").on("click", function(){
+                qualityChanging = true;
+                clearTimeout(menuCloseTimeout);
+            });
+
+            // Re-apply gear-rotating class if quality is changing
+            if (qualityChanging) {
+                $this.container.addClass("gear-rotating");
+            }
         });
     });
 
