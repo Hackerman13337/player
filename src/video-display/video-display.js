@@ -231,7 +231,7 @@ Player.provide('video-display',
 
           // HTTP Live Streaming
           if (typeof(v.video_hls_download)!='undefined' && v.video_hls_download.length>0 && v.video_hls_size>0 && ($this.video.canPlayType('application/vnd.apple.mpegURL')||swfobject.hasFlashPlayerVersion('10.1.0'))) {
-            $this.qualities['auto'] = {format:'video_hls', codec:'hls', displayName:'Auto', displayQuality:'Auto', source:Player.get('url') + v.video_hls_download, sortkey: 6};
+            $this.qualities['auto'] = {format:'video_hls', codec:'hls', displayName:'Auto', displayQuality:'Auto', source:Player.get('url') + v.video_hls_download, sortkey: 0};
           }
 
           // Turn on Mischung when applicable either if the source is admin, or if there's no transcoded version
