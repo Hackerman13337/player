@@ -314,6 +314,10 @@ Player.provide('video-display',
         if ($this.autoMute) {
           // Auto-mute from property
           Player.set("volumeMuted", true);
+        } else if (!$this.mutedAutoPlay) {
+          // Ensure volume is on by default (not muted)
+          Player.set("volume", 1);
+          Player.set("volumeMuted", false);
         }
 
         try {
