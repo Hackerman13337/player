@@ -1,4 +1,7 @@
 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="12" y="14" width="16" height="10" rx="2" fill="white"/>
-<path d="M15 17H25M15 21H23" stroke="black" stroke-opacity="0.15" stroke-width="1.5" stroke-linecap="round"/>
+<mask id="cc-mask">
+  <rect x="12" y="14" width="16" height="10" rx="2" fill="white"/>
+  <path d="M15 17H25M15 21H23" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+</mask>
+<rect x="12" y="14" width="16" height="10" rx="2" fill="white" mask="url(#cc-mask)"/>
 </svg>
