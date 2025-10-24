@@ -300,7 +300,7 @@ ul.button-menu {
   scrollbar-color: #aaa var(--menu-background-color);
   scrollbar-width: thin;
   scrollbar-gutter: stable;
-  transition: height 200ms ease, overflow 1ms ease 0s allow-discrete;
+  transition: height 200ms ease 400ms, overflow 1ms ease 0s allow-discrete;
   border-bottom:0 solid transparent;
 }
 ul.button-menu::before, ul.button-menu::after {
@@ -1166,13 +1166,12 @@ body.overlay-shown .button-container-share {
 }
 .quality-button::after {
   background-image: url('gear.svg');
-  transition: transform 400ms ease-out 200ms;
+  transition: transform 300ms ease-out;
   transform: rotate(0deg);
 }
 .button-container:hover .quality-button::after,
 .button-container-active .quality-button::after {
   transform: rotate(45deg);
-  transition-delay: 0ms;
 }
 .volume-button-on::after {
   background-image: url('volume-on.svg');
