@@ -38,14 +38,14 @@ Player.provide('playback-rate-button',
     // Control rate option and labels
     Player.getter('playbackRatesArray', function () {
         return ([
-            { rate: 0.25, label: '0.25x' },
-            { rate: 0.5, label: '0.5x' },
-            { rate: 0.75, label: '0.75x' },
-            { rate: 1.0, label: '1x' },
-            { rate: 1.25, label: '1.25x' },
-            { rate: 1.5, label: '1.5x' },
+            { rate: 2.0, label: '2x' },
             { rate: 1.75, label: '1.75x' },
-            { rate: 2.0, label: '2x' }
+            { rate: 1.5, label: '1.5x' },
+            { rate: 1.25, label: '1.25x' },
+            { rate: 1.0, label: '1x' },
+            { rate: 0.75, label: '0.75x' },
+            { rate: 0.5, label: '0.5x' },
+            { rate: 0.25, label: '0.25x' }
         ]);
     });
 

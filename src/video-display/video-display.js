@@ -649,7 +649,7 @@ Player.provide('video-display',
               ret.push(o);
           });
           ret.sort(function(a,b){
-              return (isNaN(a.sortkey) ? 0 : a.sortkey) - (isNaN(b.sortkey) ? 0 : b.sortkey);
+              return (isNaN(b.sortkey) ? 0 : b.sortkey) - (isNaN(a.sortkey) ? 0 : a.sortkey);
           });
           return ret;
       });
