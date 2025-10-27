@@ -32,13 +32,14 @@ Player.provide('quality-button',
             });
 
             // Add gear rotation animation support
-            $this.container.on("mouseenter", function(){
+            // Remove old listeners to prevent memory leaks
+            $this.container.off("mouseenter.qualityGear").on("mouseenter.qualityGear", function(){
                 clearTimeout(menuCloseTimeout);
                 $this.container.addClass("gear-rotating");
                 $('body').addClass("quality-gear-rotating");
             });
 
-            $this.container.on("mouseleave", function(){
+            $this.container.off("mouseleave.qualityGear").on("mouseleave.qualityGear", function(){
                 if (!qualityChanging) {
                     menuCloseTimeout = setTimeout(function(){
                         $this.container.removeClass("gear-rotating");
@@ -48,7 +49,7 @@ Player.provide('quality-button',
             });
 
             // Detect clicks on quality menu items
-            $this.buttonMenu.find(".button-menu-item").on("click", function(){
+            $this.buttonMenu.find(".button-menu-item").off("click.qualityGear").on("click.qualityGear", function(){
                 qualityChanging = true;
                 clearTimeout(menuCloseTimeout);
                 $('body').addClass("quality-gear-rotating");

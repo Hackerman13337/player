@@ -207,7 +207,8 @@ Player.provide(
       });
     };
     updateTabIndex();
-    window.setInterval(updateTabIndex, 300);
+    // Store interval ID to allow cleanup if needed
+    $this.tabIndexIntervalId = window.setInterval(updateTabIndex, 300);
 
     $this.loadShortcuts();
     return $this;

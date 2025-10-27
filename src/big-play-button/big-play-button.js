@@ -180,14 +180,15 @@ Player.provide('big-play-button',
     }, 50);
 
     // Update big play button when tray visibility changes (for touch devices)
-    var _trayObserver = new MutationObserver(function(mutations) {
+    // Store observer to allow cleanup if needed
+    $this.trayObserver = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
         if (mutation.attributeName === "class") {
           _updateBigPlay();
         }
       });
     });
-    _trayObserver.observe(document.body, { attributes: true });
+    $this.trayObserver.observe(document.body, { attributes: true });
 
     // Flash big play button when play/pause state changes
     var _lastPlayingState = Player.get('playing');
