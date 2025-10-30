@@ -917,6 +917,7 @@ Player.provide('video-display',
       });
 
       // Add click-to-play/pause on video canvas
+      var clickTimer = null;
       $this.canvas.on('click', function(e){
           // Don't toggle if clicking on controls or other UI elements
           if($(e.target).closest('.tray-scrubber, .tray-left, .tray-right, button').length === 0) {
@@ -924,7 +925,11 @@ Player.provide('video-display',
               Player.fire('player:video:canvastap');
               // Only toggle playback on desktop, not on touch devices
               if(!$('body').hasClass('touch')) {
-                  Player.set('playing', !Player.get('playing'));
+                  // Delay to prevent triggering on double-click
+                  clearTimeout(clickTimer);
+                  clickTimer = setTimeout(function() {
+                      Player.set('playing', !Player.get('playing'));
+                  }, 200);
               }
           }
       });
@@ -933,6 +938,8 @@ Player.provide('video-display',
       $this.canvas.on('dblclick', function(e){
           // Don't toggle if clicking on controls or other UI elements
           if($(e.target).closest('.tray-scrubber, .tray-left, .tray-right, button').length === 0) {
+              // Cancel the pending click event
+              clearTimeout(clickTimer);
               Player.set('fullscreen', !Player.get('fullscreen'));
           }
       });
