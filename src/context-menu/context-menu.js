@@ -28,7 +28,8 @@ Player.provide('context-menu',{
     Player.getter('menuLeft', function(){ return $this.menuLeft; });
     Player.getter('linkBoxValue', function(){return $this.linkBoxValue;});
     Player.getter('debugParameters', function(){
-        var current_id = Player.get("video").type == "clip" ? Player.get("video_photo_id") : Player.get("video_live_id");
+        var video = Player.get("video");
+        var current_id = video && video.type == "clip" ? Player.get("video_photo_id") : Player.get("video_live_id");
         var current_token = Player.get("video_token");
         var paramString = "current_id="+current_id+"&current_token="+current_token;
         $.each(Player.settings, function(key, value){
