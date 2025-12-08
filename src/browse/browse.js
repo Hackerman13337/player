@@ -119,11 +119,15 @@ Player.provide('browse',
       Player.bind('player:loaded player:browse:loaded', function(){
           var c = Player.get('clips');
           $.each(c, function(i){
-              c[i].browseThumbnailUrl = '/' + c[i].tree_id + '/' + c[i].photo_id + '/' + c[i].token + '/' + $this.browseThumbnailWidth + 'x' + $this.browseThumbnailHeight + 'cr/thumbnail.jpg';
+              if(c[i] && c[i].tree_id && c[i].photo_id && c[i].token) {
+                  c[i].browseThumbnailUrl = '/' + c[i].tree_id + '/' + c[i].photo_id + '/' + c[i].token + '/' + $this.browseThumbnailWidth + 'x' + $this.browseThumbnailHeight + 'cr/thumbnail.jpg';
+              }
           });
           var s = Player.get('streams');
           $.each(s, function(i){
-              s[i].browseThumbnailUrl = '/' + s[i].thumbnail_tree_id + '/' + s[i].thumbnail_photo_id + '/' + s[i].thumbnail_token + '/' + $this.browseThumbnailWidth + 'x' + $this.browseThumbnailHeight + 'cr/thumbnail.jpg';
+              if(s[i] && s[i].thumbnail_tree_id && s[i].thumbnail_photo_id && s[i].thumbnail_token) {
+                  s[i].browseThumbnailUrl = '/' + s[i].thumbnail_tree_id + '/' + s[i].thumbnail_photo_id + '/' + s[i].thumbnail_token + '/' + $this.browseThumbnailWidth + 'x' + $this.browseThumbnailHeight + 'cr/thumbnail.jpg';
+              }
           });
           Player.fire('player:browse:updated');
         });
@@ -145,14 +149,17 @@ Player.provide('browse',
       Player.getter('browseThumbnailWidth', function(){return $this.browseThumbnailWidth;});
       Player.getter('browseThumbnailHeight', function(){return $this.browseThumbnailHeight;});
       Player.getter('recommendations', function(){
-          var objects = Player.get("streams").concat(Player.get("clips"));
+          var streams = Player.get("streams") || [];
+          var clips = Player.get("clips") || [];
+          var objects = streams.concat(clips);
           var recommendations = [];
           for(var i = 0; i < objects.length; i++) {
               var o = objects[i];
-              if(o.type == "stream" && o.live_id != Player.get("video_live_id")){
+              if(!o) continue; // Skip undefined/null objects
+              if(o.type == "stream" && o.live_id && o.live_id != Player.get("video_live_id")){
                   recommendations.push(o);
               }
-              if(o.type == "clip" && o.photo_id != Player.get("video_photo_id")){
+              if(o.type == "clip" && o.photo_id && o.photo_id != Player.get("video_photo_id")){
                   recommendations.push(o);
               }
           }
