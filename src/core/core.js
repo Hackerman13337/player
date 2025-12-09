@@ -325,7 +325,10 @@ Player.provide('core',
           return $this.url + '/' + $this.video.link;
         }
       });
-      Player.getter('video_aspect_ratio', function(){return ($this.video.video_medium_width||1) / ($this.video.video_medium_height||1);});
+      Player.getter('video_aspect_ratio', function(){
+        if(!$this.video) return 16/9; // Default aspect ratio
+        return ($this.video.video_medium_width||1) / ($this.video.video_medium_height||1);
+      });
       Player.getter('video_sharable', function(){
         if(!$this.video) return false;
         if($this.video.type == "clip"){
