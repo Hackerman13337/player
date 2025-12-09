@@ -139,6 +139,8 @@ Player.provide('scrubber',
       // Calculate position of the thumbnail display
       var scrubberWidth = $this.scrubber.get(0).clientWidth;
       var positionOffset = (offsetPct*scrubberWidth) - (_thumbnailWidth + 4)/2;
+      // Clamp position to stay within bounds (prevent going off edges)
+      positionOffset = Math.max(0, Math.min(positionOffset, scrubberWidth - _thumbnailWidth));
       // Position and show the thumbnail container
       $this.thumbnailContainer.css({
         left:positionOffset+'px'
