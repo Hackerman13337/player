@@ -91,6 +91,7 @@ Player.provide('slides',{
     $this.loadSlides = function(video){
         var idTokenObject = {};
         var v = video||Player.get("video");
+        if(!v) return; // Exit if no video loaded yet
         if(v.type=="clip"){
             idTokenObject = {photo_id: v.photo_id};
         }else{

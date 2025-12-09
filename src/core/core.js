@@ -320,9 +320,13 @@ Player.provide('core',
       Player.getter('video_base_url', function(){
         if(!$this.video) return $this.url;
         if($this.video.type=='clip') {
-          return $this.url + '/' + $this.video.tree_id + '/' + $this.video.photo_id + '/' + $this.video.token + '/';
+          var tree_id = $this.video.tree_id || '';
+          var photo_id = $this.video.photo_id || '';
+          var token = $this.video.token || '';
+          if(!tree_id || !photo_id || !token) return $this.url;
+          return $this.url + '/' + tree_id + '/' + photo_id + '/' + token + '/';
         } else {
-          return $this.url + '/' + $this.video.link;
+          return $this.url + '/' + ($this.video.link || '');
         }
       });
       Player.getter('video_aspect_ratio', function(){

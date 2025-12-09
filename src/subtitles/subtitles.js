@@ -386,6 +386,7 @@ Player.provide('subtitles',
     // Load locales for live
     var loadLiveSubtitlesFromApi = function () {
       var v = Player.get('video');
+      if(!v || !v.live_id || !v.token) return; // Exit if video not loaded yet
       // Empty by default
       Player.set('locales', {});
       Player.set('subtitleLocale', (!!$this.defaultLocale && !!$this.subtitlesOnByDefault ? $this.defaultLocale : ''));
