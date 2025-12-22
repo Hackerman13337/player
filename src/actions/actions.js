@@ -57,7 +57,7 @@ Player.provide('actions',
     $this.rgbaSupport = /^rgba/.test($this.dummyElement.css('backgroundColor'));
 
     // Clicks on the container (but not individual actions) should toggle playback
-    $this.container.on("click", function(e){
+    var handlePlaybackToggle = function(e){
       if(e.handled||e.target!=this) return;
       if(Player.get("displayDevice") == "html5" && Player.get("videoElement").video.get(0).muted){
         Player.get("videoElement").video.get(0).muted = false;
@@ -68,7 +68,11 @@ Player.provide('actions',
       e.handled = true;
       e.stopPropagation();
       e.preventDefault();
-    });
+    };
+
+    // Support both click (desktop) and touchend (mobile) events
+    $this.container.on("click", handlePlaybackToggle);
+    $this.container.on("touchend", handlePlaybackToggle);
 
     registerActionHandlers($this);
 
