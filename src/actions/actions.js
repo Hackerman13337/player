@@ -61,17 +61,26 @@ Player.provide('actions',
     var handlePlaybackToggle = function(e){
       if(e.handled||e.target!=this) return;
 
-      // On touch devices, just show the tray instead of toggling playback
+      // On touch devices, toggle tray visibility instead of toggling playback
       if(Player.get("isTouchDevice")){
-        // Show tray by adding the tray-shown class
         window.clearTimeout(_trayTimeoutId);
-        $('body').addClass("tray-shown");
 
-        // Hide tray after 5 seconds of inactivity (unless alwaysShowTray is enabled)
-        if(!Player.get("alwaysShowTray")) {
-          _trayTimeoutId = window.setTimeout(function(){
-            $('body').removeClass("tray-shown");
-          }, 5000);
+        // Toggle tray visibility
+        var isTrayShown = $('body').hasClass("tray-shown");
+
+        if(isTrayShown) {
+          // Hide tray if already shown
+          $('body').removeClass("tray-shown");
+        } else {
+          // Show tray if hidden
+          $('body').addClass("tray-shown");
+
+          // Hide tray after 5 seconds of inactivity (unless alwaysShowTray is enabled)
+          if(!Player.get("alwaysShowTray")) {
+            _trayTimeoutId = window.setTimeout(function(){
+              $('body').removeClass("tray-shown");
+            }, 5000);
+          }
         }
 
         e.handled = true;
