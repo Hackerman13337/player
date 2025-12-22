@@ -57,8 +57,30 @@ Player.provide('actions',
     $this.rgbaSupport = /^rgba/.test($this.dummyElement.css('backgroundColor'));
 
     // Clicks on the container (but not individual actions) should toggle playback
+    var _trayTimeoutId = null;
     var handlePlaybackToggle = function(e){
       if(e.handled||e.target!=this) return;
+
+      // On touch devices, just show the tray instead of toggling playback
+      if(Player.get("isTouchDevice")){
+        // Show tray by adding the tray-shown class
+        window.clearTimeout(_trayTimeoutId);
+        $('body').addClass("tray-shown");
+
+        // Hide tray after 5 seconds of inactivity (unless alwaysShowTray is enabled)
+        if(!Player.get("alwaysShowTray")) {
+          _trayTimeoutId = window.setTimeout(function(){
+            $('body').removeClass("tray-shown");
+          }, 5000);
+        }
+
+        e.handled = true;
+        e.stopPropagation();
+        e.preventDefault();
+        return;
+      }
+
+      // Desktop behavior: unmute or toggle playback
       if(Player.get("displayDevice") == "html5" && Player.get("videoElement").video.get(0).muted){
         Player.get("videoElement").video.get(0).muted = false;
         Player.set("mutedAutoPlay", false);
