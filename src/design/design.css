@@ -507,7 +507,7 @@ ul.button-menu-selection li.selected button,
   position:absolute;
   left: 0;
   bottom:44px;
-  width: 94px;
+  width: 160px;
   border:2px solid var(--tray-background-color);
   overflow: hidden;
 }

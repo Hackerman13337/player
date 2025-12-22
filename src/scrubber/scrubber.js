@@ -139,6 +139,12 @@ Player.provide('scrubber',
       // Calculate position of the thumbnail display
       var scrubberWidth = $this.scrubber.get(0).clientWidth;
       var positionOffset = (offsetPct*scrubberWidth) - (_thumbnailWidth + 4)/2;
+
+      // Clamp position to keep thumbnail within scrubber bounds
+      var minPosition = 0;
+      var maxPosition = scrubberWidth - _thumbnailWidth - 4;
+      positionOffset = Math.max(minPosition, Math.min(maxPosition, positionOffset));
+
       // Position and show the thumbnail container
       $this.thumbnailContainer.css({
         left:positionOffset+'px'
@@ -159,7 +165,7 @@ Player.provide('scrubber',
       }
 
       // Set thumbnail dimensions
-      _thumbnailWidth = 94;
+      _thumbnailWidth = 160;
       _thumbnailHeight = Player.get("video_frames_height") * _thumbnailWidth / Player.get("video_frames_width");
       $this.thumbnailContainer.css({
         width:_thumbnailWidth,
