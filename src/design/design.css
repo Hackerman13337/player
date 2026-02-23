@@ -437,7 +437,6 @@ ul.button-menu-selection li.selected button,
 }
 .tray-left {
   flex: 0;
-  float:left;
   margin-right:var(--tray-play-button-gap);
 }
 .tray-left .button-container button {
@@ -446,7 +445,6 @@ ul.button-menu-selection li.selected button,
 }
 .tray-right {
   display: flex;
-  float: right;
   flex: 0;
   padding-right: 5px;
 }
