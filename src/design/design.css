@@ -396,7 +396,6 @@ ul.button-menu-selection li.selected button,
 }
 #traysub {
   display: flex;
-  flex-wrap: nowrap;
   max-width: 1200px;
   margin: 0 auto var(--tray-margin) auto;
 }
@@ -437,7 +436,8 @@ ul.button-menu-selection li.selected button,
   }
 }
 .tray-left {
-  flex: 0 0 auto;
+  flex: 0;
+  float:left;
   margin-right:var(--tray-play-button-gap);
 }
 .tray-left .button-container button {
@@ -446,7 +446,8 @@ ul.button-menu-selection li.selected button,
 }
 .tray-right {
   display: flex;
-  flex: 0 0 auto;
+  float: right;
+  flex: 0;
   padding-right: 5px;
 }
 .tray-right .button-container > button, .tray-right .button-container > button img {
